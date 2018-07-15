@@ -82,7 +82,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnBarrier(at position: CGPoint) {
+        print("in")
         if gameInfo.isGameRunning {
+            print("through")
             let barrier = Barrier(frame: self.frame, position: position, textureImage: gameInfo.selectedTheme.barrierTexture)
             let border = SKPhysicsBody(rectangleOf: barrier.size)
             border.categoryBitMask =  0x1 << 3
@@ -134,6 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func handleBeginGame(){
+        gameInfo.isGameRunning = true
         let delegate = StartDelegate(scene: self)
         delegate.beginGame()
     }

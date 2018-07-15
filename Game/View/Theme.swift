@@ -101,5 +101,42 @@ public class ThemeMinimalist : Theme {
 }
 
 
+public class ThemeBlue : Theme {
+    var name: String
+    
+    var price: Int
+    
+    var emitterColor: UIColor
+    
+    var sceneColor: UIColor
+    
+    var ballTexture: UIImage
+    
+    var darknessTexture: UIImage
+    
+    var barrierTexture: UIImage
+    
+    var buttonTexture: UIImage
+    
+    public init() {
+        name = "Lost in Blue"
+        price = 5
+        emitterColor = UIColor(red: 42/255,
+                               green: 77/255,
+                               blue: 105/255,
+                               alpha: 1)
+        sceneColor = UIColor(red: 75/255,
+                             green: 134/255,
+                             blue: 180/255,
+                             alpha: 1)
+        //Core textures
+        ballTexture = #imageLiteral(resourceName: "Ball Texture")
+        buttonTexture = #imageLiteral(resourceName: "Button Texture")
+        barrierTexture = #imageLiteral(resourceName: "Barrier Texture")
+        darknessTexture = #imageLiteral(resourceName: "Darkness Texture")
+    }
+    
+}
+
 
 

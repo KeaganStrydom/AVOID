@@ -20,7 +20,7 @@ class UsersDefaults : SettingsProvider {
     
     
     func getAllThemes() -> [Theme] {
-        let allThemes : [Theme] = [ThemeDefault(), ThemeMinimalist()]
+        let allThemes : [Theme] = [ThemeDefault(), ThemeMinimalist(), ThemeBlue()]
         return allThemes
     }
     
