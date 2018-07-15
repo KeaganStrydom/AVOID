@@ -83,13 +83,13 @@ public class ThemeMinimalist : Theme {
     public init() {
         name = "Minimalist"
         price = 5
-        emitterColor = UIColor(red: 0/255,
-                               green: 0/255,
-                               blue: 0/255,
+        emitterColor = UIColor(red: 255/255,
+                               green: 255/255,
+                               blue: 255/255,
                                alpha: 1)
-        sceneColor = UIColor(red: 180/255,
-                             green: 13/255,
-                             blue: 13/255,
+        sceneColor = UIColor(red: 0/255,
+                             green: 0/255,
+                             blue: 0/255,
                              alpha: 1)
         //Core textures
         ballTexture = #imageLiteral(resourceName: "Minimalist Ball")
@@ -121,13 +121,13 @@ public class ThemeBlue : Theme {
     public init() {
         name = "Lost in Blue"
         price = 5
-        emitterColor = UIColor(red: 42/255,
-                               green: 77/255,
-                               blue: 105/255,
+        emitterColor = UIColor(red: 0/255,
+                               green: 82/255,
+                               blue: 147/255,
                                alpha: 1)
-        sceneColor = UIColor(red: 75/255,
-                             green: 134/255,
-                             blue: 180/255,
+        sceneColor = UIColor(red: 0/255,
+                             green: 142/255,
+                             blue: 255/255,
                              alpha: 1)
         //Core textures
         ballTexture = #imageLiteral(resourceName: "Ball Texture")

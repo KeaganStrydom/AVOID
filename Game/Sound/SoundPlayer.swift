@@ -12,16 +12,16 @@ import AVKit
 //http://www.freesfx.co.uk (Glass Shatter Sound)
 
 class SoundPlayer : AVAudioPlayer {
-    init(resourceName : String) {
-        
+    init?(resourceName : String) {
         let filePath = Bundle.main.path(forResource: resourceName, ofType: "mp3")
         let url = URL(fileURLWithPath: filePath!)
         
         do {
             try super.init(contentsOf: url, fileTypeHint: "mp3")
-            self.prepareToPlay()
+            prepareToPlay()
         } catch {
-            print("Error caught")
+            fatalError("Error")
+            return nil
         }
         
     }

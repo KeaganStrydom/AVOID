@@ -31,17 +31,17 @@ class StartDelegate {
    
     
     @objc func beginGame(){
-        scene.gameInfo.isGameRunning = true
         scene.gameInfo.isSoundMuted = fetchSoundState()
-        initBall()
         startDarkness()
         hideLabelStart()
     }
     
     
     func hideLabelStart() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 1, animations: {
             self.scene.UI.buttonStart.alpha = 0
+        }) { (hasFinishedAnimating) in
+            self.initBall()
         }
     }
     

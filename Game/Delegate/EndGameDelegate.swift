@@ -43,7 +43,7 @@ class EndDelegate {
     }
     
     private func playShatterSound(){
-        scene.gameInfo.shatterPlayer = SoundPlayer(resourceName: "Shatter Sound")
+        scene.gameInfo.shatterPlayer = SoundPlayer(resourceName: "Shatter Sound")!
         scene.gameInfo.shatterPlayer.play()
     }
     
@@ -121,7 +121,7 @@ class EndDelegate {
     }
     
     private func turnOffSound() {
-        scene.gameInfo.musicPlayer.pause()
+        scene.gameInfo.musicPlayer?.pause()
         scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Mute")
     }
     

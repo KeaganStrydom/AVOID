@@ -14,6 +14,7 @@ class UsersDefaults : SettingsProvider {
         if isConfigSet {
             return true
         } else {
+            config.set(true, forKey: SettingsKeys.configSet)
             return false
         }
     }
@@ -55,9 +56,9 @@ class UsersDefaults : SettingsProvider {
     func updateBoughtThemes(_ theme : Theme) {
         let config = UserDefaults.standard
         var boughtThemes = getBoughtThemes()
-        print(boughtThemes)
         print(theme.name)
         boughtThemes.append(theme.name)
+        print(boughtThemes)
         config.set(boughtThemes, forKey: SettingsKeys.boughtThemes)
     }
     

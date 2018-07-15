@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func playMusic() {
-        gameInfo.musicPlayer.play()
+        gameInfo.musicPlayer?.play()
     }
     
     func addBorder(to object: SKNode, withBody border: SKPhysicsBody) {
@@ -82,9 +82,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnBarrier(at position: CGPoint) {
-        print("in")
         if gameInfo.isGameRunning {
-            print("through")
             let barrier = Barrier(frame: self.frame, position: position, textureImage: gameInfo.selectedTheme.barrierTexture)
             let border = SKPhysicsBody(rectangleOf: barrier.size)
             border.categoryBitMask =  0x1 << 3
@@ -113,13 +111,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func handleMusicReset() {
-        if !(gameInfo.musicPlayer.isPlaying) && settings.getMusicState() == SoundOptions.muted && gameInfo.isGameRunning {
+        if !((gameInfo.musicPlayer?.isPlaying)!) && settings.getMusicState() == SoundOptions.unmuted && gameInfo.isGameRunning {
             playMusic()
         }
     }
     
     func canSpawnTrail() {
-        if gameInfo.isGameRunning && gameInfo.intFrame % 5 == 0 {
+        if gameInfo.isGameRunning && gameInfo.intFrame % 5 == 0  && UI.buttonStart.alpha == 0{
             displayTrail(at: UI.gameBall.position)
         }
     }
