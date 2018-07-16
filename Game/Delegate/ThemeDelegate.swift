@@ -19,7 +19,7 @@ class ThemeDelegate {
     }
     
     @objc func showThemeStore() {
-        animatePoints(total: scene.settings.getTotalPoints(), current: 0)
+        scene.animatePoints(target: scene.settings.getTotalPoints(), current: 0)
         let delegate = EndDelegate(scene: scene)
         delegate.hideEndView()
         
@@ -42,22 +42,11 @@ class ThemeDelegate {
         let theme = allThemes[sender.tag] as Theme
         print(sender.tag)
         if isThemeBought(theme) {
-            buyError(sender: sender )
-            //setSelectedTheme(theme)
+            setSelectedTheme(theme)
         } else {
             switch canBuyTheme(theme) {
             case true : setSelectedTheme(theme)
             case false : buyError(sender: sender)
-            }
-        }
-    }
-    private func animatePoints(total : Int, current : Int) {
-        if current != total {
-            UIView.animate(withDuration: 1, animations: {
-                self.scene.UI.labelPoints.text = "•" + String(current)
-                
-            }) { (success) in
-                self.animatePoints(total: total, current: current + 1)
             }
         }
     }
@@ -77,7 +66,7 @@ class ThemeDelegate {
     private func buyThemeWithPoints(_ totalPoints : Int, theme : Theme) {
         let updatedTotalPoints = totalPoints - theme.price
         scene.settings.updateBoughtThemes(theme)
-        scene.UI.labelPoints.text = String(updatedTotalPoints)
+        scene.animatePoints(target: updatedTotalPoints, current: totalPoints)
         scene.settings.updateTotalPointsTo(updatedTotalPoints)
     }
     
@@ -98,14 +87,14 @@ class ThemeDelegate {
     }
     
     private func buyError(sender: UIButton) {
-        let cell = scene.UI.storeCV?.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! ThemeCell
-        print(sender.tag)
-        print(sender.currentImage)
-        UIView.animate(withDuration: 1, animations: {
-            cell.errorView.backgroundColor = .red
+        UIView.animate(withDuration: 0.5, animations: {
+            sender.superview?.backgroundColor = .red
         }) { (hasFinished) in
-            UIView.animate(withDuration: 1.5, animations: {
-                cell.errorView.backgroundColor = .clear
+            UIView.animate(withDuration: 1, animations: {
+                sender.superview?.backgroundColor = UIColor(red: 0.8,
+                                                            green: 0.8,
+                                                            blue: 0.8,
+                                                            alpha: 0.3)
             })
         }
     }

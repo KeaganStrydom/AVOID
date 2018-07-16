@@ -183,8 +183,8 @@ class EndDelegate {
                         self.scene.UI.labelBest.alpha = 0
                         self.scene.UI.imageViewSound.alpha = 0
                         self.scene.UI.viewOverlay.alpha = 0.0
-                        self.scene.gameInfo.intPoints = 0
                         self.scene.UI.buttonStore.alpha = 0
+                        self.scene.UI.labelPoints.text = "0"
         }) { (success) in
             self.retryGame()
         }

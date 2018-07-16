@@ -91,6 +91,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
+    public func animatePoints(target : Int, current : Int) {
+        if current != target {
+            UIView.animate(withDuration: 1, animations: {
+                self.UI.labelPoints.text = "•" + String(current)
+                
+            }) { (success) in
+                if target > current {
+                    self.animatePoints(target: target, current: current + 1)
+                } else {
+                    self.animatePoints(target: target, current: current - 1)
+                }
+            }
+        }
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         incFrame()
