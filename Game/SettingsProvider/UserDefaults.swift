@@ -73,9 +73,7 @@ class UsersDefaults : SettingsProvider {
     func updateBoughtThemes(_ theme : Theme) {
         let config = UserDefaults.standard
         var boughtThemes = getBoughtThemes()
-        print(theme.name)
         boughtThemes.append(theme.name)
-        print(boughtThemes)
         config.set(boughtThemes, forKey: SettingsKeys.boughtThemes)
     }
     

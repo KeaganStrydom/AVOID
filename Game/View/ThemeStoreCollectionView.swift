@@ -31,7 +31,7 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
         center.y = sceneCenter.y + (0.15 * (scene.view?.frame.height)!)
         dataSource = self
         delegate = self
-        register(ThemeCell.self, forCellWithReuseIdentifier: identifier)
+        register(UICollectionView.self, forCellWithReuseIdentifier: identifier)
         backgroundColor = .clear
     }
     
@@ -45,11 +45,10 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ThemeCell
+        let cell = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
         let sortedThemes = sortThemes()
         
         _ = ThemeView(in: cell, theme: sortedThemes[indexPath.row], scene : scene)
-        
         return cell
     }
     
@@ -57,21 +56,4 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-class ThemeCell : UICollectionViewCell {
-    let errorView = UIView()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        let cornerRadius = Screen.width * (4/75)
-        errorView.backgroundColor = .clear
-        errorView.frame = frame
-        errorView.layer.cornerRadius = cornerRadius
-        self.addSubview(errorView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }

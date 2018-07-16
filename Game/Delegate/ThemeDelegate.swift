@@ -40,7 +40,6 @@ class ThemeDelegate {
     @objc func switchToTheme(sender: UIButton) {
         let allThemes = scene.settings.getAllThemes()
         let theme = allThemes[sender.tag] as Theme
-        print(sender.tag)
         if isThemeBought(theme) {
             setSelectedTheme(theme)
         } else {
