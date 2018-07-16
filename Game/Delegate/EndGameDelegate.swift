@@ -92,9 +92,10 @@ class EndDelegate {
     }
     
     func showSoundOptions() {
-        switch scene.gameInfo.isSoundMuted {
-        case true : scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Mute")
-        case false: scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Unmute")
+        if scene.gameInfo.isSoundMuted {
+            scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Mute")
+        } else {
+            scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Unmute")
         }
         UIView.animate(withDuration: 1.5) {
             self.scene.UI.imageViewSound.alpha = 0.7

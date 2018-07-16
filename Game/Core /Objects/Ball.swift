@@ -39,10 +39,9 @@ class Ball : SKSpriteNode {
     }
     
     private func handleType() {
-        switch type {
-        case .normal:
+        if type == .normal {
             addPhysics()
-        case .trail:
+        } else if type == .trail {
             moveTrail()
             alpha = 0.2
         }
