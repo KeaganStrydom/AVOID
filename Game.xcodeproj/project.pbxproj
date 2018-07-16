@@ -29,8 +29,11 @@
 		E8A9823720E443E900130463 /* PointsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A9823620E443E900130463 /* PointsLabel.swift */; };
 		E8AA156A20EBB2C300FBA7F9 /* Darkness.sks in Resources */ = {isa = PBXBuildFile; fileRef = E8AA156820EBB2C300FBA7F9 /* Darkness.sks */; };
 		E8AA156B20EBB2C300FBA7F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8AA156920EBB2C300FBA7F9 /* Assets.xcassets */; };
-		E8AA156D20EC125700FBA7F9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA156C20EC125700FBA7F9 /* Theme.swift */; };
+		E8AA156D20EC125700FBA7F9 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */; };
 		E8AA156F20EC2A9C00FBA7F9 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA156E20EC2A9C00FBA7F9 /* ThemeButton.swift */; };
+		E8E3941420FCCCE30029FFDA /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941320FCCCE30029FFDA /* Default.swift */; };
+		E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941520FCCCF80029FFDA /* Blue.swift */; };
+		E8E3941820FCCD050029FFDA /* Blood.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941720FCCD050029FFDA /* Blood.swift */; };
 		E8F3F26A20F96B870051289B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3F26920F96B870051289B /* UserDefaults.swift */; };
 		E8F3F26C20F979790051289B /* EndGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3F26B20F979790051289B /* EndGameDelegate.swift */; };
 		E8F3F26E20F9799A0051289B /* StartGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3F26D20F9799A0051289B /* StartGameDelegate.swift */; };
@@ -90,8 +93,11 @@
 		E8A9823620E443E900130463 /* PointsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsLabel.swift; sourceTree = "<group>"; };
 		E8AA156820EBB2C300FBA7F9 /* Darkness.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Darkness.sks; sourceTree = "<group>"; };
 		E8AA156920EBB2C300FBA7F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E8AA156C20EC125700FBA7F9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E8AA156E20EC2A9C00FBA7F9 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
+		E8E3941320FCCCE30029FFDA /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
+		E8E3941520FCCCF80029FFDA /* Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blue.swift; sourceTree = "<group>"; };
+		E8E3941720FCCD050029FFDA /* Blood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blood.swift; sourceTree = "<group>"; };
 		E8F3F26920F96B870051289B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		E8F3F26B20F979790051289B /* EndGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameDelegate.swift; sourceTree = "<group>"; };
 		E8F3F26D20F9799A0051289B /* StartGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +228,17 @@
 			path = EmitterEffects;
 			sourceTree = "<group>";
 		};
+		E8E3941220FCCCC80029FFDA /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */,
+				E8E3941320FCCCE30029FFDA /* Default.swift */,
+				E8E3941520FCCCF80029FFDA /* Blue.swift */,
+				E8E3941720FCCD050029FFDA /* Blood.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		E8F3F26820F96B3F0051289B /* SettingsProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,7 +284,7 @@
 			children = (
 				E8A981EC20E2CCE600130463 /* GameScene.swift */,
 				E8FD709720F7F7E9009167E2 /* UserInterface.swift */,
-				E8AA156C20EC125700FBA7F9 /* Theme.swift */,
+				E8E3941220FCCCC80029FFDA /* Themes */,
 				E8F3F26F20FABB910051289B /* ThemeStoreCollectionView.swift */,
 			);
 			path = View;
@@ -417,7 +434,7 @@
 			files = (
 				E8AA156F20EC2A9C00FBA7F9 /* ThemeButton.swift in Sources */,
 				E897241520F20FA200C423F6 /* SettingsProvider.swift in Sources */,
-				E8AA156D20EC125700FBA7F9 /* Theme.swift in Sources */,
+				E8AA156D20EC125700FBA7F9 /* ThemeModel.swift in Sources */,
 				E8FD709620F7F7A9009167E2 /* SoundOptions.swift in Sources */,
 				E8F3F26C20F979790051289B /* EndGameDelegate.swift in Sources */,
 				E8F3F26E20F9799A0051289B /* StartGameDelegate.swift in Sources */,
@@ -425,9 +442,11 @@
 				E8A9823320E4422300130463 /* Barrier.swift in Sources */,
 				E883020A20EA399A00F1E541 /* SoundPlayer.swift in Sources */,
 				E8A981EF20E2CCE600130463 /* GameViewController.swift in Sources */,
+				E8E3941420FCCCE30029FFDA /* Default.swift in Sources */,
 				E8A9823120E441B700130463 /* Ball.swift in Sources */,
 				E8A9822F20E4419300130463 /* Darkness.swift in Sources */,
 				E8FD709A20F7F80C009167E2 /* GameVariables.swift in Sources */,
+				E8E3941820FCCD050029FFDA /* Blood.swift in Sources */,
 				E8A981E720E2CCE600130463 /* AppDelegate.swift in Sources */,
 				E8F3F27020FABB910051289B /* ThemeStoreCollectionView.swift in Sources */,
 				E8FD70AA20F95FE9009167E2 /* ThemeDelegate.swift in Sources */,
@@ -435,6 +454,7 @@
 				E8FD709C20F7F843009167E2 /* CollisionCategory.swift in Sources */,
 				E8A9823720E443E900130463 /* PointsLabel.swift in Sources */,
 				E8FD70A120F80F6D009167E2 /* Names.swift in Sources */,
+				E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */,
 				E8FD709820F7F7E9009167E2 /* UserInterface.swift in Sources */,
 				E8FD709420F7F792009167E2 /* ScreenSize.swift in Sources */,
 			);
