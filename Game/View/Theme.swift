@@ -16,6 +16,8 @@ protocol Theme {
     //Required points to purchase theme
     var price : Int {get}
     
+    var status : ThemeStatus {get set}
+    
     //The color of the 'darkness' emitter
     var emitterColor : UIColor {get}
     //Color of Scene
@@ -28,6 +30,8 @@ protocol Theme {
 }
 
 class ThemeDefault : Theme {
+    var status: ThemeStatus
+    
     var name: String
     
     var price: Int
@@ -45,6 +49,8 @@ class ThemeDefault : Theme {
     var buttonTexture: UIImage
     
     public init () {
+        status = .noStatus
+        
         name = "Default"
         price = 0
         emitterColor = UIColor(red: 140/255,
@@ -63,7 +69,9 @@ class ThemeDefault : Theme {
     }
 }
 
-public class ThemeMinimalist : Theme {
+public class ThemeBlood : Theme {
+    var status: ThemeStatus
+    
     var name: String
     
     var price: Int
@@ -81,27 +89,31 @@ public class ThemeMinimalist : Theme {
     var buttonTexture: UIImage
     
     public init() {
-        name = "Minimalist"
+        status = .noStatus
+        
+        name = "Lost in Blood"
         price = 5
         emitterColor = UIColor(red: 255/255,
                                green: 255/255,
                                blue: 255/255,
                                alpha: 1)
-        sceneColor = UIColor(red: 0/255,
-                             green: 0/255,
-                             blue: 0/255,
+        sceneColor = UIColor(red: 45/255,
+                             green: 45/255,
+                             blue: 45/255,
                              alpha: 1)
         //Core textures
-        ballTexture = #imageLiteral(resourceName: "Minimalist Ball")
-        buttonTexture = #imageLiteral(resourceName: "Minimalist Theme")
-        barrierTexture = #imageLiteral(resourceName: "Minimalist Barrier")
-        darknessTexture = #imageLiteral(resourceName: "Minimalist Darkness")
+        ballTexture = #imageLiteral(resourceName: "Blood Ball")
+        buttonTexture = #imageLiteral(resourceName: "Blood Button")
+        barrierTexture = #imageLiteral(resourceName: "Blood Barrier")
+        darknessTexture = #imageLiteral(resourceName: "Blood Darkness")
     }
     
 }
 
 
 public class ThemeBlue : Theme {
+    var status: ThemeStatus
+    
     var name: String
     
     var price: Int
@@ -119,21 +131,23 @@ public class ThemeBlue : Theme {
     var buttonTexture: UIImage
     
     public init() {
+        status = .noStatus
+        
         name = "Lost in Blue"
         price = 5
-        emitterColor = UIColor(red: 0/255,
-                               green: 82/255,
-                               blue: 147/255,
+        emitterColor = UIColor(red: 80/255,
+                               green: 177/255,
+                               blue: 255/255,
                                alpha: 1)
-        sceneColor = UIColor(red: 0/255,
-                             green: 142/255,
+        sceneColor = UIColor(red: 80/255,
+                             green: 177/255,
                              blue: 255/255,
                              alpha: 1)
         //Core textures
-        ballTexture = #imageLiteral(resourceName: "Ball Texture")
-        buttonTexture = #imageLiteral(resourceName: "Button Texture")
-        barrierTexture = #imageLiteral(resourceName: "Barrier Texture")
-        darknessTexture = #imageLiteral(resourceName: "Darkness Texture")
+        ballTexture = #imageLiteral(resourceName: "Blue Ball")
+        buttonTexture = #imageLiteral(resourceName: "Blue Button")
+        barrierTexture = #imageLiteral(resourceName: "Blue Barrier")
+        darknessTexture = #imageLiteral(resourceName: "Blue Darkness")
     }
     
 }

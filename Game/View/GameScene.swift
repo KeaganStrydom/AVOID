@@ -129,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func displayTrail(at pos: CGPoint) {
-        let trail = Ball.init(type: .trail, pos: pos, textureImage: gameInfo.selectedTheme.ballTexture)
+        let trail = Ball.init(type: .trail, pos: pos, textureImage: #imageLiteral(resourceName: "Trail ball"))
         self.addChild(trail)
     }
     

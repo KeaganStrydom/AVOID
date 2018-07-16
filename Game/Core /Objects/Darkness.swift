@@ -27,6 +27,8 @@ class Darkness : SKSpriteNode {
         let emitter = SKEmitterNode(fileNamed: "Darkness.sks")!
             emitter.particlePositionRange = CGVector(dx: width, dy: 0)
             emitter.position = self.position
+            emitter.particleColorSequence = nil
+            emitter.particleColorBlendFactor = 1.0
             emitter.particleColor = theme.emitterColor
             emitter.particleTexture = SKTexture(image: theme.darknessTexture)
             scene.addChild(emitter)

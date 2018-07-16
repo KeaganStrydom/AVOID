@@ -9,22 +9,36 @@
 import UIKit
 import SpriteKit
 
-struct ThemeOptions {
-    private init() {}
-    
-    static let select = "select"
-    static let change = "change"
-    static let active = "active"
+enum ThemeStatus : String {
+    case active = "active"
+    case selectable = "select"
+    case purchasable = "change"
+    case noStatus = "invalid status"
+}
+
+extension ThemeStatus {
+    var sortIndex : Int {
+        switch self {
+        case .active:
+            return 0
+        case .selectable:
+            return 1
+        case .purchasable:
+            return 2
+        case .noStatus:
+            return 3
+        }
+    }
 }
 
 class ThemeView : UIView {
     
     let labelDisplay = UILabel()
     var button = UIButton()
+    var scene : GameScene
     
-    init(in cell : UICollectionViewCell, theme : Theme, scene : GameScene, tag : Int) {
-        
-        
+    init(in cell : UICollectionViewCell, theme : Theme, scene : GameScene) {
+        self.scene = scene
         super.init(frame: CGRect(x: 0,
                                  y: 0,
                                  width: cell.frame.width,
@@ -34,7 +48,8 @@ class ThemeView : UIView {
         
         button = ThemeButton(in: self, theme: theme)
         button.addTarget(scene, action: #selector(scene.handleThemeSwitch(sender:)), for: .touchUpInside)
-        button.tag = tag
+        setTagFrom(theme)
+        
         self.alpha = 1
         self.clipsToBounds = true
         self.backgroundColor = UIColor(red: 0.8,
@@ -61,21 +76,28 @@ class ThemeView : UIView {
     }
     
     private func setThemeOptionfor(theme: Theme, scene : GameScene) {
-        let delegate = ThemeDelegate(scene: scene)
-        let isBought : Bool = delegate.isThemeBought(theme)
-        let selectedTheme = scene.settings.getSelectedTheme()
-        if isBought && (selectedTheme.name == theme.name){
-            changeText(to: ThemeOptions.active)
-        } else if isBought && (selectedTheme.name != theme.name) {
-            changeText(to: ThemeOptions.select)
-        } else if !(isBought) {
+        if theme.status == .purchasable {
             changeText(to: String(theme.price))
+        } else {
+            changeText(to: theme.status.rawValue)
         }
     }
     
     private func changeText(to text : String) {
             labelDisplay.text = text
         }
+    
+    private func setTagFrom(_ theme : Theme) {
+        button.tag = 0
+        
+        let allThemes = scene.settings.getAllThemes()
+        for current in allThemes {
+            if theme.name == current.name {
+             break
+            }
+            button.tag += 1
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

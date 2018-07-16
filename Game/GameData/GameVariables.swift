@@ -23,6 +23,7 @@ struct GameVariables {
     var timeIntervalDarkness = 1.5
     var selectedTheme : Theme
     var timerDarkness : Timer? = Timer()
+    var timerPoints : Timer? = Timer()
     var timerBallTrail : Timer? = Timer()
     
     // Audio Players

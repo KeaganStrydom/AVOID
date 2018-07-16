@@ -21,21 +21,38 @@ class UsersDefaults : SettingsProvider {
     
     
     func getAllThemes() -> [Theme] {
-        let allThemes : [Theme] = [ThemeDefault(), ThemeMinimalist(), ThemeBlue()]
+        let allThemes : [Theme] = [ThemeDefault(), ThemeBlood(), ThemeBlue()]
+        
+        let selectedThemeName = UserDefaults.standard.string(forKey: SettingsKeys.selectedTheme)
+        let boughtThemes = getBoughtThemes()
+        
+        for var theme in allThemes {
+            
+            if theme.name == selectedThemeName {
+                theme.status = .active
+                continue
+            }
+
+            if boughtThemes.contains(theme.name) {
+                theme.status = .selectable
+                continue
+            }
+            
+            theme.status = .purchasable
+        }
+        
         return allThemes
     }
     
     func getSelectedTheme() -> Theme {
-        let config = UserDefaults.standard
-        var selectedTheme : Theme = ThemeDefault()
-        let selectedThemeName = config.string(forKey: SettingsKeys.selectedTheme)
         let allThemes = getAllThemes()
         for theme in allThemes {
-            if theme.name == selectedThemeName {
-                selectedTheme = theme
+            if theme.status == .active{
+                return theme
             }
         }
-        return selectedTheme
+        
+        return ThemeDefault()
     }
     
     func updateSelectedThemeTo(_ theme: Theme) {

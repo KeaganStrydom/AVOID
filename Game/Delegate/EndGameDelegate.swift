@@ -81,6 +81,8 @@ class EndDelegate {
         scene.UI.labelPoints.text = String(scene.gameInfo.intPoints)
     }
     
+    
+    
     private func showBest() {
         let highscore = String(scene.settings.getHighscore())
         UIView.animate(withDuration: 1.5) {

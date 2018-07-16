@@ -19,7 +19,7 @@ class ThemeDelegate {
     }
     
     @objc func showThemeStore() {
-        scene.UI.labelPoints.text = String(scene.settings.getTotalPoints())
+        animatePoints(total: scene.settings.getTotalPoints(), current: 0)
         let delegate = EndDelegate(scene: scene)
         delegate.hideEndView()
         
@@ -40,17 +40,27 @@ class ThemeDelegate {
     @objc func switchToTheme(sender: UIButton) {
         let allThemes = scene.settings.getAllThemes()
         let theme = allThemes[sender.tag] as Theme
-        
+        print(sender.tag)
         if isThemeBought(theme) {
-            setSelectedTheme(theme)
+            buyError(sender: sender )
+            //setSelectedTheme(theme)
         } else {
             switch canBuyTheme(theme) {
             case true : setSelectedTheme(theme)
-            case false : buyError()
+            case false : buyError(sender: sender)
             }
         }
     }
-    
+    private func animatePoints(total : Int, current : Int) {
+        if current != total {
+            UIView.animate(withDuration: 1, animations: {
+                self.scene.UI.labelPoints.text = "•" + String(current)
+                
+            }) { (success) in
+                self.animatePoints(total: total, current: current + 1)
+            }
+        }
+    }
     
     private func canBuyTheme(_ selected : Theme) -> Bool{
         let totalPoints = scene.settings.getTotalPoints()
@@ -87,12 +97,24 @@ class ThemeDelegate {
         scene.settings.updateSelectedThemeTo(theme)
     }
     
-    private func buyError() {
-        
+    private func buyError(sender: UIButton) {
+        let cell = scene.UI.storeCV?.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as! ThemeCell
+        print(sender.tag)
+        print(sender.currentImage)
+        UIView.animate(withDuration: 1, animations: {
+            cell.errorView.backgroundColor = .red
+        }) { (hasFinished) in
+            UIView.animate(withDuration: 1.5, animations: {
+                cell.errorView.backgroundColor = .clear
+            })
+        }
     }
     
     private func updateViewToTheme() {
         scene.backgroundColor = scene.gameInfo.selectedTheme.sceneColor
+        scene.UI.storeCV?.removeFromSuperview()
+        scene.UI.storeCV = ThemeStore(scene: scene)
+        scene.view?.addSubview(scene.UI.storeCV!)
     }
 
 }

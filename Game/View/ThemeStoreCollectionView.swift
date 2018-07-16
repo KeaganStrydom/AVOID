@@ -12,11 +12,10 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
     
     let identifier = "theme cell"
     var scene : GameScene
-    var allThemes : [Theme]
+    
     
     init(scene : GameScene) {
         self.scene = scene
-        self.allThemes = scene.settings.getAllThemes()
         
         let frame = CGRect(x: 0,
                            y: 0,
@@ -32,17 +31,25 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
         center.y = sceneCenter.y + (0.15 * (scene.view?.frame.height)!)
         dataSource = self
         delegate = self
-        register(UICollectionViewCell.self, forCellWithReuseIdentifier: identifier)
+        register(ThemeCell.self, forCellWithReuseIdentifier: identifier)
         backgroundColor = .clear
     }
     
+    private func sortThemes() -> [Theme] {
+        let sortedThemes : [Theme] = scene.settings.getAllThemes()
+        return sortedThemes.sorted(by: { $0.status.sortIndex < $1.status.sortIndex})
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return allThemes.count
+        return scene.settings.getAllThemes().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        _ = ThemeView(in: cell, theme: allThemes[indexPath.row], scene : scene, tag : indexPath.row)
+        let cell = dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! ThemeCell
+        let sortedThemes = sortThemes()
+        
+        _ = ThemeView(in: cell, theme: sortedThemes[indexPath.row], scene : scene)
+        
         return cell
     }
     
@@ -50,4 +57,21 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+class ThemeCell : UICollectionViewCell {
+    let errorView = UIView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let cornerRadius = Screen.width * (4/75)
+        errorView.backgroundColor = .clear
+        errorView.frame = frame
+        errorView.layer.cornerRadius = cornerRadius
+        self.addSubview(errorView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
