@@ -91,16 +91,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    public func animatePoints(target : Int, current : Int) {
+    public func animatePoints( target : Int, current : Int) {
+        var currentNum : Int
+        if (target - current) > 400 {
+            currentNum = target - 400
+        } else {
+            currentNum = current
+        }
         if current != target {
             UIView.animate(withDuration: 1, animations: {
-                self.UI.labelPoints.text = "•" + String(current)
+                self.UI.labelPoints.text = "•" + String(currentNum)
                 
             }) { (success) in
                 if target > current {
-                    self.animatePoints(target: target, current: current + 1)
+                    self.animatePoints(target: target, current: currentNum + 1)
                 } else {
-                    self.animatePoints(target: target, current: current - 1)
+                    self.animatePoints(target: target, current: currentNum - 1)
                 }
             }
         }
@@ -149,7 +155,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func handleBeginGame(){
-        gameInfo.isGameRunning = true
         let delegate = StartDelegate(scene: self)
         delegate.beginGame()
     }

@@ -197,6 +197,7 @@ class EndDelegate {
     func showLabelStart(){
         scene.UI.buttonStart.isUserInteractionEnabled = true
         UIView.animate(withDuration: 1.5) {
+            self.scene.gameInfo.intPoints = 0
             self.scene.UI.buttonStart.alpha = 1
         }
     }

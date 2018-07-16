@@ -41,7 +41,9 @@ class StartDelegate {
         UIView.animate(withDuration: 1, animations: {
             self.scene.UI.buttonStart.alpha = 0
         }) { (hasFinishedAnimating) in
+            self.scene.gameInfo.isGameRunning = true
             self.initBall()
+            self.scene.UI.gameBall.applyImpulse()
         }
     }
     
@@ -81,7 +83,6 @@ class StartDelegate {
     
     private func initBall() {
         scene.UI.gameBall = Ball.init(type: .normal, pos: CGPoint(x: 0, y: 0), textureImage: scene.gameInfo.selectedTheme.ballTexture)
-        scene.UI.gameBall.applyImpulse()
         scene.addChild(scene.UI.gameBall)
     }
     

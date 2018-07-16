@@ -92,7 +92,7 @@ public class ThemeBlood : Theme {
         status = .noStatus
         
         name = "Lost in Blood"
-        price = 2000
+        price = 5
         emitterColor = UIColor(red: 255/255,
                                green: 255/255,
                                blue: 255/255,
@@ -134,7 +134,7 @@ public class ThemeBlue : Theme {
         status = .noStatus
         
         name = "Lost in Blue"
-        price = 750
+        price = 25
         emitterColor = UIColor(red: 80/255,
                                green: 177/255,
                                blue: 255/255,
