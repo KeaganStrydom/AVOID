@@ -18,7 +18,6 @@ class PointsLabel : UILabel {
         font = UIFont(name: "AvenirNext-UltraLight", size: height / 1.6)
         textAlignment = .center
         textColor = .white
-        
         let startingPoints = 0
         text = String(startingPoints)
     }

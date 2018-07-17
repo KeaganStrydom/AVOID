@@ -20,21 +20,38 @@ class ThemeDelegate {
     
     @objc func showThemeStore() {
         scene.animatePoints(target: scene.settings.getTotalPoints(), current: 0)
-        let delegate = EndDelegate(scene: scene)
-        delegate.hideEndView()
         
         scene.UI.storeCV = ThemeStore(scene: scene)
+        scene.UI.storeCV?.alpha = 0
         scene.view?.addSubview(scene.UI.storeCV!)
         
-        UIView.animate(withDuration: 3.5,
+        animateThemeStoreIn()
+    }
+    
+    func animateThemeStoreIn() {
+        
+        UIView.animate(withDuration: 1,
                        delay: 0,
                        usingSpringWithDamping: 1,
                        initialSpringVelocity: 0,
-                       options: .curveEaseIn,
+                       options: .curveEaseOut,
                        animations: {
-                        self.scene.UI.buttonBack.alpha = 1
-                        self.scene.UI.storeCV!.alpha = 1
-        })
+            self.scene.UI.buttonRetry.alpha = 0
+            self.scene.UI.labelBest.alpha = 0
+            self.scene.UI.imageViewSound.alpha = 0
+            self.scene.UI.buttonStore.alpha = 0
+        }) { (hasFinished) in
+            UIView.animate(withDuration: 2,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: .curveEaseIn,
+                           animations: {
+                            self.scene.UI.labelPoints.alpha = 1
+                            self.scene.UI.buttonBack.alpha = 1
+                            self.scene.UI.storeCV!.alpha = 1
+            })
+        }
     }
     
     @objc func switchToTheme(sender: UIButton) {
@@ -43,9 +60,10 @@ class ThemeDelegate {
         if isThemeBought(theme) {
             setSelectedTheme(theme)
         } else {
-            switch canBuyTheme(theme) {
-            case true : setSelectedTheme(theme)
-            case false : buyError(sender: sender)
+            if canBuyTheme(theme) {
+                setSelectedTheme(theme)
+            } else {
+                buyError(sender: sender)
             }
         }
     }
@@ -87,7 +105,7 @@ class ThemeDelegate {
     
     private func buyError(sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.superview?.backgroundColor = .red
+            sender.superview?.backgroundColor = UIColor(red: 200/255, green: 50/255, blue: 45/255, alpha: 1)
         }) { (hasFinished) in
             UIView.animate(withDuration: 1, animations: {
                 sender.superview?.backgroundColor = UIColor(red: 0.8,

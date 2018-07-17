@@ -2,7 +2,7 @@
 //  StartGameDelegate.swift
 //  Game
 //
-//  Created by Keagan Strydom on 2018/07/14.
+//  Created by Keagan Strydom onssbvbggf 2018/07/14.
 //  Copyright © 2018 Lighthouse. All rights reserved.
 //
 
@@ -17,34 +17,24 @@ class StartDelegate {
         self.scene = scene
     }
     
-    private func startDarkness() {
-        if scene.gameInfo.timerDarkness == nil {
-            scene.gameInfo.timerDarkness = Timer.scheduledTimer(timeInterval: scene.gameInfo.timeIntervalDarkness,
-                                                          target: scene,
-                                                          selector: #selector(scene.spawnDarkness),
-                                                          userInfo: nil,
-                                                          repeats: true)
-        }
-    }
-    
-    
-   
-    
     @objc func beginGame(){
         scene.gameInfo.isSoundMuted = fetchSoundState()
-        startDarkness()
-        hideLabelStart()
+        hideStart()
     }
     
-    
-    func hideLabelStart() {
+    func hideStart() {
         UIView.animate(withDuration: 1, animations: {
             self.scene.UI.buttonStart.alpha = 0
         }) { (hasFinishedAnimating) in
             self.scene.gameInfo.isGameRunning = true
             self.initBall()
-            self.scene.UI.gameBall.applyImpulse()
+            _ = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.applyForceAndStartSpawner), userInfo: nil, repeats: false)
         }
+    }
+    
+    @objc private func applyForceAndStartSpawner() {
+        self.scene.UI.gameBall.applyImpulse()
+        scene.activateSpawner()
     }
     
     private func fetchSoundState() -> Bool {
@@ -104,14 +94,16 @@ class StartDelegate {
     
     private func initImageViewSound() {
         scene.UI.imageViewSound.alpha = 0
+        scene.UI.imageViewSound.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
         scene.UI.imageViewSound.contentMode = .scaleAspectFit
+        scene.UI.imageViewSound.layer.cornerRadius = Screen.width * (4/75)
         scene.UI.imageViewSound.isUserInteractionEnabled = true
         scene.UI.imageViewSound.addGestureRecognizer(UITapGestureRecognizer(target: scene, action: #selector(scene.handleSoundInvert)))
         scene.UI.imageViewSound.translatesAutoresizingMaskIntoConstraints = false
         scene.view?.addSubview(scene.UI.imageViewSound)
         scene.UI.imageViewSound.centerYAnchor.constraint(equalTo: scene.UI.labelPoints.centerYAnchor).isActive = true
-       scene.UI.imageViewSound.widthAnchor.constraint(equalTo: (scene.view?.widthAnchor)!, multiplier: 0.14).isActive = true
-        scene.UI.imageViewSound.heightAnchor.constraint(equalTo: scene.UI.imageViewSound.widthAnchor, multiplier: 1).isActive = true
+        scene.UI.imageViewSound.heightAnchor.constraint(equalTo: (scene.view?.widthAnchor)!, multiplier: 0.14).isActive = true
+        scene.UI.imageViewSound.widthAnchor.constraint(equalTo: scene.UI.imageViewSound.heightAnchor, multiplier: 1.8).isActive = true
         scene.UI.imageViewSound.centerXAnchor.constraint(equalTo: (scene.view?.rightAnchor)!, constant: -((scene.view?.frame.width)!/6)).isActive = true
     }
     
@@ -166,11 +158,14 @@ class StartDelegate {
         scene.view?.addSubview(scene.UI.viewOverlay)
     }
     
+    
     private func initBackButton() {
         scene.UI.buttonBack.alpha = 0
-        scene.UI.buttonBack.backgroundColor = .clear
-        scene.UI.buttonBack.setBackgroundImage(#imageLiteral(resourceName: "BackButton"), for: .normal)
-        scene.UI.buttonBack.contentMode = .scaleAspectFit
+        scene.UI.buttonBack.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
+        scene.UI.buttonBack.setImage(#imageLiteral(resourceName: "BackButton"), for: .normal)
+        scene.UI.buttonBack.layer.cornerRadius = Screen.width * (4/75)
+        scene.UI.buttonBack.imageView?.frame = CGRect(origin: scene.UI.buttonBack.center, size: CGSize(width: scene.UI.buttonBack.frame.height * 0.7, height: scene.UI.buttonBack.frame.height * 0.7))
+        scene.UI.buttonBack.imageView?.contentMode = .scaleAspectFit
         scene.UI.buttonBack.translatesAutoresizingMaskIntoConstraints = false
         scene.UI.buttonBack.addTarget(scene, action: #selector(scene.handleBackButton), for: .touchUpInside)
         scene.view?.addSubview(scene.UI.buttonBack)

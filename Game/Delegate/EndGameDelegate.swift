@@ -21,7 +21,7 @@ class EndDelegate {
     func endGame() {
         checkHighScore()
         shatterBall()
-        stopDarkness()
+        scene.deactivateSpawner()
         scene.gameInfo.isGameRunning = false
         addPointsToTotal()
         Timer.scheduledTimer(timeInterval: 3,
@@ -54,13 +54,7 @@ class EndDelegate {
             
         }
     }
-    
-    private func stopDarkness() {
-        if scene.gameInfo.timerDarkness != nil {
-            scene.gameInfo.timerDarkness?.invalidate()
-            scene.gameInfo.timerDarkness = nil
-        }
-    }
+
     
     private func addPointsToTotal() {
         let totalPoints = scene.settings.getTotalPoints()
@@ -158,21 +152,6 @@ class EndDelegate {
             self.scene.UI.buttonStore.alpha = 1
         }
     }
-    
-    func hideEndView() {
-        UIView.animate(withDuration: 2.5,
-                       delay: 0,
-                       usingSpringWithDamping: 1,
-                       initialSpringVelocity: 0,
-                       options: .curveEaseIn,
-                       animations: {
-                        self.scene.UI.buttonRetry.alpha = 0
-                        self.scene.UI.labelBest.alpha = 0
-                        self.scene.UI.imageViewSound.alpha = 0
-                        self.scene.UI.buttonStore.alpha = 0
-        })
-    }
-    
     @objc func dismissEndView() {
         UIView.animate(withDuration: 1.5,
                        delay: 0,

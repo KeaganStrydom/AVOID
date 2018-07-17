@@ -10,7 +10,8 @@ import GameplayKit
 import AVKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-
+    
+    let darknessSpawner = SKNode()
     var settings : SettingsProvider
     var gameInfo = GameVariables(selectedTheme: ThemeDefault())
     var UI = UIGameScene()
@@ -57,14 +58,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private func increasePoints() {
         gameInfo.intPoints += 1
+        increasSpawnSpeedTo(getSpeedForDifficulty())
+    }
+    
+    public func activateSpawner() {
+        let wait = SKAction.wait(forDuration: gameInfo.darknessFrequency)
+        let spawn = SKAction.run(spawnDarkness)
+        darknessSpawner.run(SKAction.repeatForever(SKAction.sequence([wait,spawn])))
+        addChild(darknessSpawner)
+    }
+    
+    public func deactivateSpawner() {
+        darknessSpawner.removeAllActions()
+        darknessSpawner.removeFromParent()
+    }
+    
+    private func increasSpawnSpeedTo(_ speed : CGFloat) {
+        darknessSpawner.speed = speed
     }
     
     @objc func spawnDarkness(){
+        if gameInfo.isGameRunning {
         let upperBound = frame.width/2
         let lowerBound = -(frame.width/2)
-        let xPos = CGFloat(arc4random_uniform(UInt32((upperBound + 1) - lowerBound + lowerBound)))
-        let darkness = Darkness.init(frame: self.frame, xPos: xPos, scene: self, theme: gameInfo.selectedTheme)
+            
+        let xPos = CGFloat(arc4random_uniform(UInt32(upperBound - lowerBound + 1))) + CGFloat(lowerBound)
+        let darkness = Darkness.init(frame: self.frame, xPos: xPos , scene: self, theme: gameInfo.selectedTheme)
         self.addChild(darkness)
+        }
     }
     
     func playMusic() {
@@ -116,7 +137,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Called before each frame is rendered
         incFrame()
         canSpawnTrail()
-        canIncreaseDarkness()
         updateLabelPoints()
         handleMusicReset()
     }
@@ -142,10 +162,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             displayTrail(at: UI.gameBall.position)
         }
     }
+
     
-    private func canIncreaseDarkness() {
-        if gameInfo.isGameRunning && gameInfo.intPoints % 10  == 0 {
-            
+    private func getSpeedForDifficulty() -> CGFloat {
+        switch gameInfo.intPoints {
+        case 0...10 : return (1)
+        case 10...30 : return (1.5)
+        case 30...40 : return (2)
+        case _ where gameInfo.intPoints > 40 : return (2)
+        default:
+            return 2
         }
     }
     
@@ -179,4 +205,3 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         delegate.switchToTheme(sender: sender)
     }
 }
-

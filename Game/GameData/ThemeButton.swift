@@ -66,7 +66,8 @@ class ThemeView : UIView {
     
     private func setupDisplayLabel() {
         let buttonHeight = 0.8 * self.frame.height
-        labelDisplay.font = UIFont(name: "AvenirNext-UltraLight", size: 30)
+        
+        labelDisplay.font = UIFont(name: "AvenirNext-UltraLight", size: Screen.height * 0.04076)
         labelDisplay.textColor = .white
         labelDisplay.textAlignment = .center
         labelDisplay.frame = CGRect(x: 0,
@@ -117,6 +118,7 @@ class ThemeButton : UIButton {
         
         view.addSubview(self)
         self.setImage(theme.buttonTexture, for: .normal)
+        self.imageView?.contentMode = .scaleAspectFit
         /*
         Make background color alpha 0.1
         if button alpha is mutated the background

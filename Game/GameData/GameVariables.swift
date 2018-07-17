@@ -20,7 +20,7 @@ struct GameVariables {
     var intPoints = 0
     var isSoundMuted = true
     var isGameRunning = false
-    var timeIntervalDarkness = 1.5
+    var darknessFrequency = 1.0
     var selectedTheme : Theme
     var timerDarkness : Timer? = Timer()
     var timerPoints : Timer? = Timer()

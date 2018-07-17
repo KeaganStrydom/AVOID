@@ -21,41 +21,32 @@ class Darkness : SKSpriteNode {
         super.init(texture: nil, color: .clear, size: CGSize(width: width, height: height))
         
         name = Name.obstacle
+        position = CGPoint(x: xPos, y:  frame.height + height)
+        if xPos > 0 {
+            anchorPoint = CGPoint(x: 1, y: 0.5)
+        } else if xPos < 0 {
+            anchorPoint = CGPoint(x: 0, y: 0.5)
+        }
         
         physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.isDynamic = false
         physicsBody?.affectedByGravity = false
         
-        position = CGPoint(x: xPos, y:  frame.height + height)
-        
         let emitter = SKEmitterNode(fileNamed: "Darkness.sks")!
             emitter.particlePositionRange = CGVector(dx: width, dy: 0)
-            emitter.position = self.position
+            emitter.position = position
             emitter.particleColorSequence = nil
             emitter.particleColorBlendFactor = 1.0
             emitter.particleColor = theme.emitterColor
             emitter.particleTexture = SKTexture(image: theme.darknessTexture)
             scene.addChild(emitter)
-        //darkness(emitter, canMove: true)
+
         let action = SKAction.moveTo(y: -(frame.height), duration: 4)
         run(action) { self.removeFromParent()}
         emitter.run(action) {self.removeFromParent()}
+        
     }
-    
-//
-//    func darkness(_ emitter : SKEmitterNode, canMove: Bool) {
-//        if canMove {
-//        var action : SKAction = SKAction()
-//        if emitter.position.x >= 0 {
-//             action = SKAction.moveTo(x: -inScene.frame.width, duration: 2)
-//        } else if emitter.position.x <= 0 {
-//             action = SKAction.moveTo(x: inScene.frame.width, duration: 2)
-//        }
-//        run(action) {self.darkness(emitter, canMove: true)}
-//        emitter.run(action)
-//        }
-//    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -34,6 +34,7 @@
 		E8E3941420FCCCE30029FFDA /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941320FCCCE30029FFDA /* Default.swift */; };
 		E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941520FCCCF80029FFDA /* Blue.swift */; };
 		E8E3941820FCCD050029FFDA /* Blood.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941720FCCD050029FFDA /* Blood.swift */; };
+		E8E3941C20FD55D50029FFDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E3941A20FD55D50029FFDA /* Assets.xcassets */; };
 		E8F3F26A20F96B870051289B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3F26920F96B870051289B /* UserDefaults.swift */; };
 		E8F3F26C20F979790051289B /* EndGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3F26B20F979790051289B /* EndGameDelegate.swift */; };
 		E8F3F26E20F9799A0051289B /* StartGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F3F26D20F9799A0051289B /* StartGameDelegate.swift */; };
@@ -98,6 +99,7 @@
 		E8E3941320FCCCE30029FFDA /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
 		E8E3941520FCCCF80029FFDA /* Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blue.swift; sourceTree = "<group>"; };
 		E8E3941720FCCD050029FFDA /* Blood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blood.swift; sourceTree = "<group>"; };
+		E8E3941A20FD55D50029FFDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8F3F26920F96B870051289B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		E8F3F26B20F979790051289B /* EndGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameDelegate.swift; sourceTree = "<group>"; };
 		E8F3F26D20F9799A0051289B /* StartGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */,
 				E8E3941320FCCCE30029FFDA /* Default.swift */,
 				E8E3941520FCCCF80029FFDA /* Blue.swift */,
+				E8E3941A20FD55D50029FFDA /* Assets.xcassets */,
 				E8E3941720FCCD050029FFDA /* Blood.swift */,
 			);
 			path = Themes;
@@ -403,6 +406,7 @@
 				E883020C20EA3D7400F1E541 /* Shatter Sound.mp3 in Resources */,
 				E883021220EA69E100F1E541 /* Assets.xcassets in Resources */,
 				E8AA156B20EBB2C300FBA7F9 /* Assets.xcassets in Resources */,
+				E8E3941C20FD55D50029FFDA /* Assets.xcassets in Resources */,
 				E8A981F720E2CCE600130463 /* LaunchScreen.storyboard in Resources */,
 				E883022120EACCAE00F1E541 /* Assets.xcassets in Resources */,
 				E8A9822920E40D1E00130463 /* Background.sks in Resources */,
@@ -622,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5F5K9AZ6F;
 				INFOPLIST_FILE = Game/Info.plist;
@@ -638,6 +643,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5F5K9AZ6F;
 				INFOPLIST_FILE = Game/Info.plist;

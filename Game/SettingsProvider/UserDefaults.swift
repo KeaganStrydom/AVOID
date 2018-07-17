@@ -19,7 +19,6 @@ class UsersDefaults : SettingsProvider {
         }
     }
     
-    
     func getAllThemes() -> [Theme] {
         let allThemes : [Theme] = [ThemeDefault(), ThemeBlood(), ThemeBlue()]
         

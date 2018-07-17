@@ -31,7 +31,7 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
         center.y = sceneCenter.y + (0.15 * (scene.view?.frame.height)!)
         dataSource = self
         delegate = self
-        register(UICollectionView.self, forCellWithReuseIdentifier: identifier)
+        register(UICollectionViewCell.self, forCellWithReuseIdentifier: identifier)
         backgroundColor = .clear
     }
     
