@@ -11,7 +11,8 @@ struct Name {
     
     static let ball = "ball"
     static let barrier = "barrier"
-    
+    static let powerup = "powerup"
     //Darkness and Screen Edge
-    static let obstacle = "obstacle"
+    static let darkness = "darkness"
+    static let wall = "wall"
 }

@@ -171,7 +171,8 @@ class EndDelegate {
     }
     
     @objc func retryGame() {
-        showLabelStart()
+        self.scene.gameInfo.intPoints = 0
+        scene.handleBeginGame()
     }
     
     func showLabelStart(){

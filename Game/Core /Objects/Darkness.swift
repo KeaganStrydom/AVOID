@@ -18,16 +18,16 @@ class Darkness : SKSpriteNode {
         let width = 0.25 * frame.width
         let height = 0.03 * frame.height
         
-        super.init(texture: nil, color: .clear, size: CGSize(width: width, height: height))
+        super.init(texture: nil, color: .white, size: CGSize(width: width, height: height))
         
-        name = Name.obstacle
+        name = Name.darkness
         position = CGPoint(x: xPos, y:  frame.height + height)
         if xPos > 0 {
             anchorPoint = CGPoint(x: 1, y: 0.5)
         } else if xPos < 0 {
             anchorPoint = CGPoint(x: 0, y: 0.5)
         }
-        
+        speed = 1
         physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody?.isDynamic = false
         physicsBody?.affectedByGravity = false
@@ -39,9 +39,10 @@ class Darkness : SKSpriteNode {
             emitter.particleColorBlendFactor = 1.0
             emitter.particleColor = theme.emitterColor
             emitter.particleTexture = SKTexture(image: theme.darknessTexture)
+            emitter.speed = scene.speed
             scene.addChild(emitter)
 
-        let action = SKAction.moveTo(y: -(frame.height), duration: 4)
+        let action = SKAction.moveTo(y: -(frame.height), duration: TimeInterval(4 / scene.speed))
         run(action) { self.removeFromParent()}
         emitter.run(action) {self.removeFromParent()}
         

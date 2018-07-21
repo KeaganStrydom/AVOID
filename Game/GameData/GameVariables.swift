@@ -20,11 +20,12 @@ struct GameVariables {
     var intPoints = 0
     var isSoundMuted = true
     var isGameRunning = false
-    var darknessFrequency = 1.0
+    var darknessFrequency = 1.5
     var selectedTheme : Theme
     var timerDarkness : Timer? = Timer()
     var timerPoints : Timer? = Timer()
     var timerBallTrail : Timer? = Timer()
+    var activePowerup : Powerup?
     
     // Audio Players
     var musicPlayer = SoundPlayer(resourceName: "GameMusic")

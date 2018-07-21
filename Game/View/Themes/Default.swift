@@ -42,6 +42,7 @@ class ThemeDefault : Theme {
                              green: 129/255,
                              blue: 1,
                              alpha: 1)
+        
         //Core textures
         ballTexture = #imageLiteral(resourceName: "Default Ball")
         buttonTexture = #imageLiteral(resourceName: "Default Theme")

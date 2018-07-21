@@ -78,7 +78,7 @@ class ThemeView : UIView {
     
     private func setThemeOptionfor(theme: Theme, scene : GameScene) {
         if theme.status == .purchasable {
-            changeText(to: String(theme.price))
+            changeText(to: ("• " + String(theme.price)))
         } else {
             changeText(to: theme.status.rawValue)
         }

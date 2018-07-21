@@ -47,4 +47,6 @@ class SettingsProviderFactory {
     static func useUserDefaults() -> SettingsProvider {
         return UsersDefaults.init()
     }
+    
+    
 }

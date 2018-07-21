@@ -58,8 +58,9 @@ class Ball : SKSpriteNode {
         physicsBody.restitution = 1
         physicsBody.affectedByGravity = false
         physicsBody.allowsRotation = true
-        physicsBody.contactTestBitMask = CollisionCategory.borderCategory
+        physicsBody.contactTestBitMask = CollisionCategory.powerupCategory
         physicsBody.categoryBitMask = CollisionCategory.ballCategory
+        physicsBody.collisionBitMask = CollisionCategory.borderCategory | CollisionCategory.barrierCategory
         physicsBody.linearDamping = 0
         physicsBody.angularDamping = 0
         self.physicsBody = physicsBody

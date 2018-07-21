@@ -38,24 +38,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spawnBarrier(at: position)
         }
     }
-
+        
     func didBegin(_ contact: SKPhysicsContact) {
-        var secondBody : SKPhysicsBody
+                self.physicsWorld.contactDelegate = self
+                var secondBody : SKPhysicsBody
         
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            secondBody = contact.bodyB
-        } else {
-            secondBody = contact.bodyA
-        }
+                if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+                    secondBody = contact.bodyB
+                } else {
+                    secondBody = contact.bodyA
+                }
         
-        let nodeName = secondBody.node?.name
-        if nodeName == Name.obstacle {
+                guard let secondNode = secondBody.node else {
+                    return
+                }
+        if secondNode.name == Name.darkness || secondNode.name == Name.wall {
+            if gameInfo.activePowerup == nil {
             EndDelegate(scene: self).endGame()
-        } else if nodeName == Name.barrier {
+            } else {
+                gameInfo.activePowerup?.collision(with: secondNode, in: self)
+            }
+        }
+        else if secondNode.name == Name.barrier {
             self.increasePoints()
         }
+        else if secondNode.name == Name.powerup {
+            guard let powerup : Powerup = secondNode as? Powerup else {
+                return
+            }
+            gameInfo.activePowerup = powerup
+            powerup.affect(self)
+        }
     }
-    
+
     private func increasePoints() {
         gameInfo.intPoints += 1
         increasSpawnSpeedTo(getSpeedForDifficulty())
@@ -79,15 +94,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc func spawnDarkness(){
         if gameInfo.isGameRunning {
-        let upperBound = frame.width/2
-        let lowerBound = -(frame.width/2)
+            let upperBound = Int(frame.width/2)
+            let lowerBound = Int(-(frame.width/2))
             
-        let xPos = CGFloat(arc4random_uniform(UInt32(upperBound - lowerBound + 1))) + CGFloat(lowerBound)
-        let darkness = Darkness.init(frame: self.frame, xPos: xPos , scene: self, theme: gameInfo.selectedTheme)
-        self.addChild(darkness)
+            let xPosition = CGFloat(Random.generateNumber(between: lowerBound,and: upperBound))
+            let darkness = Darkness.init(frame: self.frame, xPos: xPosition , scene: self, theme: gameInfo.selectedTheme)
+            self.addChild(darkness)
+            
+            canSpawnPowerup()
+            }
+        }
+
+
+    func canSpawnPowerup() {
+        if gameInfo.activePowerup == nil {
+        let randomNumber = Random.generateNumber(between: 0, and: 100)
+        if Probability.inOdds(randomNumber, oddsRange: 0...50) {
+            let powerupSpawnTimer = Timer.scheduledTimer(timeInterval: 0.5,
+                                                         target: self,
+                                                         selector: #selector(spawnPowerup),
+                                                         userInfo: nil,
+                                                         repeats: false)
+            }
         }
     }
     
+    @objc func spawnPowerup() {
+        let upperBound = Int(Screen.width/2)
+        let lowerBound = Int(-(Screen.width/2))
+        let xPosition = CGFloat(Random.generateNumber(between: lowerBound, and: upperBound))
+        guard let newPowerup : Powerup = PowerupFactory.makeRandom(in: self, at: CGPoint(x: xPosition,
+                                                                                         y: Screen.height)) else {
+            return
+        }
+    }
+    
+   
     func playMusic() {
         gameInfo.musicPlayer?.play()
     }
@@ -106,7 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if gameInfo.isGameRunning {
             let barrier = Barrier(frame: self.frame, position: position, textureImage: gameInfo.selectedTheme.barrierTexture)
             let border = SKPhysicsBody(rectangleOf: barrier.size)
-            border.categoryBitMask =  0x1 << 3
+            border.categoryBitMask = CollisionCategory.barrierCategory
             addBorder(to: barrier, withBody: border)
             self.addChild(barrier)
         }
@@ -162,7 +204,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             displayTrail(at: UI.gameBall.position)
         }
     }
-
     
     private func getSpeedForDifficulty() -> CGFloat {
         switch gameInfo.intPoints {

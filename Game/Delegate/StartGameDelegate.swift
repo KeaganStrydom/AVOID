@@ -19,6 +19,7 @@ class StartDelegate {
     
     @objc func beginGame(){
         scene.gameInfo.isSoundMuted = fetchSoundState()
+        scene.speed = 1
         hideStart()
     }
     
@@ -53,9 +54,10 @@ class StartDelegate {
     func initScene() {
         scene.backgroundColor = scene.gameInfo.selectedTheme.sceneColor
         scene.isUserInteractionEnabled = true
-        scene.name = Name.obstacle
+        scene.name = Name.wall
         scene.physicsWorld.contactDelegate = scene
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        
         
         let border = SKPhysicsBody(edgeLoopFrom: scene.frame)
         scene.addBorder(to: scene, withBody: border)

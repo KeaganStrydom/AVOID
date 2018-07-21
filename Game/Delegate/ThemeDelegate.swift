@@ -105,9 +105,9 @@ class ThemeDelegate {
     
     private func buyError(sender: UIButton) {
         UIView.animate(withDuration: 0.5, animations: {
-            sender.superview?.backgroundColor = UIColor(red: 200/255, green: 50/255, blue: 45/255, alpha: 1)
+            sender.superview?.backgroundColor = UIColor(red: 1, green: 70/255, blue: 70/255, alpha: 1)
         }) { (hasFinished) in
-            UIView.animate(withDuration: 1, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 sender.superview?.backgroundColor = UIColor(red: 0.8,
                                                             green: 0.8,
                                                             blue: 0.8,
