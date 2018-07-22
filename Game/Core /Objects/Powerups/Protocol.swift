@@ -10,7 +10,10 @@ import SpriteKit
 
 protocol Powerup {
     var radius : CGFloat {get}
+    var theme : Theme {get}
+    var image : UIImage {get}
     func affect(_ scene : GameScene)
+    func revert(_ scene : GameScene)
     func collision(with node : SKNode, in scene: GameScene)
 }
 
@@ -18,11 +21,11 @@ class PowerupFactory {
     static func makeRandom(in scene: GameScene, at position : CGPoint) -> Powerup? {
         let randomNumber = Random.generateNumber(between: 0, and: 100)
         
-        if (0...98).contains(randomNumber) {
+        if (0...40).contains(randomNumber) {
             return makeFreeze(in: scene, at: position)
-        } else if (99...99).contains(randomNumber) {
-            return makeDoublePoints(in:at:)(in: scene, at: position)
-        } else if (100...100).contains(randomNumber) {
+        } else if (40...75).contains(randomNumber) {
+            return makeDoublePoints(in: scene, at: position)
+        } else if (75...100).contains(randomNumber) {
             return makeInvincibility(in: scene, at: position)
         }
         
@@ -54,6 +57,21 @@ struct PowerupDelegate {
         powerup.physicsBody?.categoryBitMask = CollisionCategory.powerupCategory
         powerup.physicsBody?.collisionBitMask = CollisionCategory.ballCategory
     }
+    static func removePowerups(from scene: GameScene ) {
+        for child in scene.children {
+            if child is Powerup {
+                child.removeFromParent()
+            }
+        }
+    }
     
+    static func changeDarkness(to color: UIColor, in scene: GameScene) {
+        let theme = scene.gameInfo.selectedTheme
+        for child in scene.children {
+                if child is UIDarkness {
+                    (child as? UIDarkness)?.emitter.particleColor = color
+                }
+            }
+        }
 }
 

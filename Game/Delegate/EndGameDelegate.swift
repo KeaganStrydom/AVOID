@@ -42,7 +42,7 @@ class EndDelegate {
         scene.addChild(shatter!)
     }
     
-    private func playShatterSound(){
+    public func playShatterSound(){
         scene.gameInfo.shatterPlayer = SoundPlayer(resourceName: "Shatter Sound")!
         scene.gameInfo.shatterPlayer.play()
     }
@@ -69,13 +69,19 @@ class EndDelegate {
         showSoundOptions()
         showOverlay()
         showPoints()
+        hideActivePowerupView()
     }
     
     private func showPoints() {
         scene.UI.labelPoints.text = String(scene.gameInfo.intPoints)
     }
     
-    
+    private func hideActivePowerupView() {
+        if scene.gameInfo.activePowerupView != nil {
+            scene.gameInfo.activePowerupView?.alpha = 0
+            scene.gameInfo.activePowerup?.revert(scene)
+        }
+    }
     
     private func showBest() {
         let highscore = String(scene.settings.getHighscore())

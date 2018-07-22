@@ -58,7 +58,7 @@ class Ball : SKSpriteNode {
         physicsBody.restitution = 1
         physicsBody.affectedByGravity = false
         physicsBody.allowsRotation = true
-        physicsBody.contactTestBitMask = CollisionCategory.powerupCategory
+        physicsBody.contactTestBitMask = CollisionCategory.powerupCategory | CollisionCategory.darknessCategory
         physicsBody.categoryBitMask = CollisionCategory.ballCategory
         physicsBody.collisionBitMask = CollisionCategory.borderCategory | CollisionCategory.barrierCategory
         physicsBody.linearDamping = 0
@@ -70,7 +70,7 @@ class Ball : SKSpriteNode {
         let direction = arc4random_uniform(2) == 0 ? -1 : 1
         
         self.physicsBody?.applyImpulse(CGVector(dx: 70, dy: 0), at: position)
-        self.physicsBody?.velocity = CGVector(dx: direction * 325, dy: 0)
+        self.physicsBody?.velocity = CGVector(dx: direction * Int(Screen.width * 0.785), dy: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -122,7 +122,6 @@ class ThemeDelegate {
         scene.UI.storeCV = ThemeStore(scene: scene)
         scene.view?.addSubview(scene.UI.storeCV!)
     }
-
 }
 
 

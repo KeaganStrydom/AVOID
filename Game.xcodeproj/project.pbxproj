@@ -16,6 +16,11 @@
 		E887F67D210385500074D89B /* Freeze.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F67C210385500074D89B /* Freeze.swift */; };
 		E887F680210385B50074D89B /* Invincibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F67F210385B50074D89B /* Invincibility.swift */; };
 		E887F682210386500074D89B /* DoublePoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F681210386500074D89B /* DoublePoints.swift */; };
+		E887F6842104B7540074D89B /* ActivePowerupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F6832104B7530074D89B /* ActivePowerupView.swift */; };
+		E887F68E2104D4840074D89B /* InvinvibilityTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F68D2104D4840074D89B /* InvinvibilityTheme.swift */; };
+		E887F6902104D5750074D89B /* DoublePointsTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F68F2104D5750074D89B /* DoublePointsTheme.swift */; };
+		E887F6922104D5890074D89B /* FreezeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F6912104D5890074D89B /* FreezeTheme.swift */; };
+		E887F696210520B90074D89B /* DarknessShatter.sks in Resources */ = {isa = PBXBuildFile; fileRef = E887F695210520B90074D89B /* DarknessShatter.sks */; };
 		E897241520F20FA200C423F6 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E897241420F20FA200C423F6 /* SettingsProvider.swift */; };
 		E8A981E720E2CCE600130463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A981E620E2CCE600130463 /* AppDelegate.swift */; };
 		E8A981ED20E2CCE600130463 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A981EC20E2CCE600130463 /* GameScene.swift */; };
@@ -35,7 +40,7 @@
 		E8AA156B20EBB2C300FBA7F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8AA156920EBB2C300FBA7F9 /* Assets.xcassets */; };
 		E8AA156D20EC125700FBA7F9 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */; };
 		E8AA156F20EC2A9C00FBA7F9 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA156E20EC2A9C00FBA7F9 /* ThemeButton.swift */; };
-		E8D0840D2101261B00805CBF /* PowerupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D0840C2101261B00805CBF /* PowerupModel.swift */; };
+		E8D0840D2101261B00805CBF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D0840C2101261B00805CBF /* Protocol.swift */; };
 		E8E3941420FCCCE30029FFDA /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941320FCCCE30029FFDA /* Default.swift */; };
 		E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941520FCCCF80029FFDA /* Blue.swift */; };
 		E8E3941820FCCD050029FFDA /* Blood.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941720FCCD050029FFDA /* Blood.swift */; };
@@ -81,6 +86,11 @@
 		E887F67C210385500074D89B /* Freeze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Freeze.swift; sourceTree = "<group>"; };
 		E887F67F210385B50074D89B /* Invincibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invincibility.swift; sourceTree = "<group>"; };
 		E887F681210386500074D89B /* DoublePoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePoints.swift; sourceTree = "<group>"; };
+		E887F6832104B7530074D89B /* ActivePowerupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivePowerupView.swift; sourceTree = "<group>"; };
+		E887F68D2104D4840074D89B /* InvinvibilityTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvinvibilityTheme.swift; sourceTree = "<group>"; };
+		E887F68F2104D5750074D89B /* DoublePointsTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePointsTheme.swift; sourceTree = "<group>"; };
+		E887F6912104D5890074D89B /* FreezeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreezeTheme.swift; sourceTree = "<group>"; };
+		E887F695210520B90074D89B /* DarknessShatter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DarknessShatter.sks; sourceTree = "<group>"; };
 		E897241420F20FA200C423F6 /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		E8A981E320E2CCE600130463 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A981E620E2CCE600130463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +116,7 @@
 		E8AA156920EBB2C300FBA7F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E8AA156E20EC2A9C00FBA7F9 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
-		E8D0840C2101261B00805CBF /* PowerupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PowerupModel.swift; path = "Game/Core /Objects/Powerups/PowerupModel.swift"; sourceTree = SOURCE_ROOT; };
+		E8D0840C2101261B00805CBF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Protocol.swift; path = "Game/Core /Objects/Powerups/Protocol.swift"; sourceTree = SOURCE_ROOT; };
 		E8E3941320FCCCE30029FFDA /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
 		E8E3941520FCCCF80029FFDA /* Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blue.swift; sourceTree = "<group>"; };
 		E8E3941720FCCD050029FFDA /* Blood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blood.swift; sourceTree = "<group>"; };
@@ -162,12 +172,40 @@
 		E887F67E2103856A0074D89B /* Powerups */ = {
 			isa = PBXGroup;
 			children = (
-				E8D0840C2101261B00805CBF /* PowerupModel.swift */,
-				E887F67C210385500074D89B /* Freeze.swift */,
-				E887F67F210385B50074D89B /* Invincibility.swift */,
-				E887F681210386500074D89B /* DoublePoints.swift */,
+				E887F6832104B7530074D89B /* ActivePowerupView.swift */,
+				E8D0840C2101261B00805CBF /* Protocol.swift */,
+				E887F68C2104D46B0074D89B /* Themes */,
+				E887F6892104CE700074D89B /* Protocols */,
+				E887F68A2104CE870074D89B /* Views */,
 			);
 			path = Powerups;
+			sourceTree = "<group>";
+		};
+		E887F6892104CE700074D89B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E887F68A2104CE870074D89B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E887F67C210385500074D89B /* Freeze.swift */,
+				E887F681210386500074D89B /* DoublePoints.swift */,
+				E887F67F210385B50074D89B /* Invincibility.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E887F68C2104D46B0074D89B /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				E887F68D2104D4840074D89B /* InvinvibilityTheme.swift */,
+				E887F68F2104D5750074D89B /* DoublePointsTheme.swift */,
+				E887F6912104D5890074D89B /* FreezeTheme.swift */,
+			);
+			path = Themes;
 			sourceTree = "<group>";
 		};
 		E8A981DA20E2CCE600130463 = {
@@ -250,6 +288,7 @@
 				E8A9822820E40D1E00130463 /* Background.sks */,
 				E8AA156820EBB2C300FBA7F9 /* Darkness.sks */,
 				E8AA156920EBB2C300FBA7F9 /* Assets.xcassets */,
+				E887F695210520B90074D89B /* DarknessShatter.sks */,
 			);
 			path = EmitterEffects;
 			sourceTree = "<group>";
@@ -258,10 +297,11 @@
 			isa = PBXGroup;
 			children = (
 				E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */,
-				E8E3941320FCCCE30029FFDA /* Default.swift */,
 				E8E3941520FCCCF80029FFDA /* Blue.swift */,
-				E8E3941A20FD55D50029FFDA /* Assets.xcassets */,
 				E8E3941720FCCD050029FFDA /* Blood.swift */,
+				E8E3941320FCCCE30029FFDA /* Default.swift */,
+				E8F3F26F20FABB910051289B /* ThemeStoreCollectionView.swift */,
+				E8E3941A20FD55D50029FFDA /* Assets.xcassets */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -314,7 +354,6 @@
 				E887F67A21036DF00074D89B /* Probability.swift */,
 				E8FD709720F7F7E9009167E2 /* UserInterface.swift */,
 				E8E3941220FCCCC80029FFDA /* Themes */,
-				E8F3F26F20FABB910051289B /* ThemeStoreCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -426,6 +465,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E887F696210520B90074D89B /* DarknessShatter.sks in Resources */,
 				E8A981F220E2CCE600130463 /* Main.storyboard in Resources */,
 				E883021020EA5FAD00F1E541 /* GameMusic.mp3 in Resources */,
 				E8E3942220FD8AB00029FFDA /* Lightbox.png in Resources */,
@@ -468,6 +508,7 @@
 				E8AA156D20EC125700FBA7F9 /* ThemeModel.swift in Sources */,
 				E8FD709620F7F7A9009167E2 /* SoundOptions.swift in Sources */,
 				E8F3F26C20F979790051289B /* EndGameDelegate.swift in Sources */,
+				E887F6902104D5750074D89B /* DoublePointsTheme.swift in Sources */,
 				E887F682210386500074D89B /* DoublePoints.swift in Sources */,
 				E8F3F26E20F9799A0051289B /* StartGameDelegate.swift in Sources */,
 				E8A981ED20E2CCE600130463 /* GameScene.swift in Sources */,
@@ -479,11 +520,13 @@
 				E887F680210385B50074D89B /* Invincibility.swift in Sources */,
 				E8A9823120E441B700130463 /* Ball.swift in Sources */,
 				E8A9822F20E4419300130463 /* Darkness.swift in Sources */,
+				E887F6842104B7540074D89B /* ActivePowerupView.swift in Sources */,
 				E8FD709A20F7F80C009167E2 /* GameVariables.swift in Sources */,
-				E8D0840D2101261B00805CBF /* PowerupModel.swift in Sources */,
+				E8D0840D2101261B00805CBF /* Protocol.swift in Sources */,
 				E8E3941820FCCD050029FFDA /* Blood.swift in Sources */,
 				E8A981E720E2CCE600130463 /* AppDelegate.swift in Sources */,
 				E8F3F27020FABB910051289B /* ThemeStoreCollectionView.swift in Sources */,
+				E887F68E2104D4840074D89B /* InvinvibilityTheme.swift in Sources */,
 				E8FD70AA20F95FE9009167E2 /* ThemeDelegate.swift in Sources */,
 				E8F3F26A20F96B870051289B /* UserDefaults.swift in Sources */,
 				E8FD709C20F7F843009167E2 /* CollisionCategory.swift in Sources */,
@@ -492,6 +535,7 @@
 				E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */,
 				E8FD709820F7F7E9009167E2 /* UserInterface.swift in Sources */,
 				E8FD709420F7F792009167E2 /* ScreenSize.swift in Sources */,
+				E887F6922104D5890074D89B /* FreezeTheme.swift in Sources */,
 				E887F67B21036DF00074D89B /* Probability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,14 +8,18 @@
 
 import SpriteKit
 class Invincibility : SKSpriteNode, Powerup {
+    var theme: Theme
+    
+    var image: UIImage = #imageLiteral(resourceName: "Invincibility")
     
     /* Powerup is circular object;
      therfore it requires a radius and diameter. */
-    var radius: CGFloat = Screen.width * 0.05
+    var radius: CGFloat = Screen.width * 0.07
     
     init(in scene : GameScene, at position : CGPoint) {
         let diameter = radius * 2
-        super.init(texture: nil, color: .red, size: CGSize(width: diameter, height: diameter))
+        self.theme = InvincibilityTheme(selected: scene.gameInfo.selectedTheme)
+        super.init(texture: SKTexture(image: image), color: .clear, size: CGSize(width: diameter, height: diameter))
         
         name = Name.powerup
         self.position = position
@@ -32,15 +36,26 @@ class Invincibility : SKSpriteNode, Powerup {
     }
     
     func affect(_ scene: GameScene) {
-        _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (success) in
+        PowerupDelegate.removePowerups(from: scene)
+        scene.gameInfo.selectedTheme = theme
+        scene.backgroundColor = theme.sceneColor
+        scene.gameInfo.activePowerupView = ActivePowerupView(in: scene, powerupImage: image)
+        scene.deactivateSpawner()
+        PowerupDelegate.changeDarkness(to: theme.emitterColor, in: scene)
+        _ = Timer.scheduledTimer(withTimeInterval: 8, repeats: false, block: { (success) in
             self.revert(scene)
         })
         self.removeFromParent()
     }
     
     func revert(_ scene: GameScene) {
+        scene.activateSpawner()
+        scene.gameInfo.selectedTheme = scene.settings.getSelectedTheme()
         scene.gameInfo.activePowerup = nil
+        scene.gameInfo.activePowerupView = nil
         scene.backgroundColor = scene.gameInfo.selectedTheme.sceneColor
+        let darknessColor = scene.gameInfo.selectedTheme.emitterColor
+        PowerupDelegate.changeDarkness(to: darknessColor, in: scene)
     }
     func collision(with node: SKNode, in scene: GameScene) {
         

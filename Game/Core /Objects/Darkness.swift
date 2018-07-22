@@ -8,9 +8,14 @@
 
 import SpriteKit
 
-class Darkness : SKSpriteNode {
+protocol UIDarkness {
+    var emitter : SKEmitterNode {get}
+}
+
+class Darkness : SKSpriteNode, UIDarkness {
     
     let inScene : GameScene
+    let emitter = SKEmitterNode(fileNamed: "Darkness.sks")!
     
     init(frame : CGRect, xPos : CGFloat, scene: GameScene, theme: Theme) {
         self.inScene = scene
@@ -18,7 +23,7 @@ class Darkness : SKSpriteNode {
         let width = 0.25 * frame.width
         let height = 0.03 * frame.height
         
-        super.init(texture: nil, color: .white, size: CGSize(width: width, height: height))
+        super.init(texture: nil, color: .clear, size: CGSize(width: width, height: height))
         
         name = Name.darkness
         position = CGPoint(x: xPos, y:  frame.height + height)
@@ -27,12 +32,13 @@ class Darkness : SKSpriteNode {
         } else if xPos < 0 {
             anchorPoint = CGPoint(x: 0, y: 0.5)
         }
-        speed = 1
         physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody?.collisionBitMask = CollisionCategory.ballCategory
+        physicsBody?.categoryBitMask = CollisionCategory.darknessCategory
         physicsBody?.isDynamic = false
         physicsBody?.affectedByGravity = false
         
-        let emitter = SKEmitterNode(fileNamed: "Darkness.sks")!
+        
             emitter.particlePositionRange = CGVector(dx: width, dy: 0)
             emitter.position = position
             emitter.particleColorSequence = nil
@@ -41,8 +47,8 @@ class Darkness : SKSpriteNode {
             emitter.particleTexture = SKTexture(image: theme.darknessTexture)
             emitter.speed = scene.speed
             scene.addChild(emitter)
-
-        let action = SKAction.moveTo(y: -(frame.height), duration: TimeInterval(4 / scene.speed))
+        
+        let action = SKAction.moveTo(y: -(frame.height), duration: 4)
         run(action) { self.removeFromParent()}
         emitter.run(action) {self.removeFromParent()}
         
@@ -52,4 +58,3 @@ class Darkness : SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

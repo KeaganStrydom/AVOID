@@ -15,4 +15,5 @@ struct CollisionCategory {
     static let barrierCategory : UInt32 = 0x1 << 1
     static let borderCategory : UInt32 = 0x1 << 2
     static let powerupCategory : UInt32 = 0x1 << 3
+    static let darknessCategory : UInt32 = 0x1 << 4
 }

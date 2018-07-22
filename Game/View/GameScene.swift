@@ -54,13 +54,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
         if secondNode.name == Name.darkness || secondNode.name == Name.wall {
             if gameInfo.activePowerup == nil {
-            EndDelegate(scene: self).endGame()
+                EndDelegate(scene: self).endGame()
             } else {
                 gameInfo.activePowerup?.collision(with: secondNode, in: self)
             }
         }
         else if secondNode.name == Name.barrier {
-            self.increasePoints()
+            self.increasePoints(by: gameInfo.pointsAddend)
         }
         else if secondNode.name == Name.powerup {
             guard let powerup : Powerup = secondNode as? Powerup else {
@@ -71,8 +71,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    private func increasePoints() {
-        gameInfo.intPoints += 1
+    private func increasePoints(by addend: Int) {
+        gameInfo.intPoints += addend
         increasSpawnSpeedTo(getSpeedForDifficulty())
     }
     
@@ -109,7 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func canSpawnPowerup() {
         if gameInfo.activePowerup == nil {
         let randomNumber = Random.generateNumber(between: 0, and: 100)
-        if Probability.inOdds(randomNumber, oddsRange: 0...50) {
+        if Probability.inOdds(randomNumber, oddsRange: 0...60) {
             let powerupSpawnTimer = Timer.scheduledTimer(timeInterval: 0.5,
                                                          target: self,
                                                          selector: #selector(spawnPowerup),
@@ -120,8 +120,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func spawnPowerup() {
-        let upperBound = Int(Screen.width/2)
-        let lowerBound = Int(-(Screen.width/2))
+        let upperBound = Int(Screen.width/2 * 0.8)
+        let lowerBound = Int((Screen.width/2) * -0.8) 
         let xPosition = CGFloat(Random.generateNumber(between: lowerBound, and: upperBound))
         guard let newPowerup : Powerup = PowerupFactory.makeRandom(in: self, at: CGPoint(x: xPosition,
                                                                                          y: Screen.height)) else {

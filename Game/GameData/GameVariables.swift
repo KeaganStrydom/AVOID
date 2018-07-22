@@ -26,7 +26,9 @@ struct GameVariables {
     var timerPoints : Timer? = Timer()
     var timerBallTrail : Timer? = Timer()
     var activePowerup : Powerup?
-    
+    var pointsAddend : Int = 1
+
+    var activePowerupView : UIView?
     // Audio Players
     var musicPlayer = SoundPlayer(resourceName: "GameMusic")
     var shatterPlayer = AVAudioPlayer()

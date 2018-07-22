@@ -34,9 +34,9 @@ class ThemeDefault : Theme {
         
         name = "Default"
         price = 0
-        emitterColor = UIColor(red: 140/255,
-                               green: 145/255,
-                               blue: 1,
+        emitterColor = UIColor(red: 80/255,
+                               green: 80/255,
+                               blue: 170/255,
                                alpha: 1)
         sceneColor = UIColor(red: 122/255,
                              green: 129/255,
