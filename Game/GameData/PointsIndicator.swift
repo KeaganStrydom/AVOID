@@ -15,11 +15,12 @@ class PointsIndicator : UILabel {
         
         //Add half the screen width and height to move the origin
         var x : CGFloat
-        let xOffset = 0.05 * Screen.width
-        if position.x > 0 {
+        
+        if position.x >= 0 {
+             let xOffset = 0.25 * Screen.width
              x = Screen.width/2 + position.x - xOffset
         } else {
-             x = Screen.width/2 + position.x + xOffset
+             x = Screen.width/2 + position.x
         }
         let y = Screen.height/2 + position.y
         

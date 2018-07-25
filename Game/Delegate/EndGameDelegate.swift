@@ -93,12 +93,12 @@ class EndDelegate {
     
     func showSoundOptions() {
         if scene.gameInfo.isSoundMuted {
-            scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Mute")
+            scene.UI.buttonSound.setImage(#imageLiteral(resourceName: "Image Mute"), for: [])
         } else {
-            scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Unmute")
+            scene.UI.buttonSound.setImage(#imageLiteral(resourceName: "Image Unmute"), for: [])
         }
         UIView.animate(withDuration: 1.5) {
-            self.scene.UI.imageViewSound.alpha = 0.7
+            self.scene.UI.buttonSound.alpha = 0.7
         }
     }
     
@@ -120,12 +120,12 @@ class EndDelegate {
     
     private func turnOnSound() {
         scene.playMusic()
-        scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Unmute")
+        scene.UI.buttonSound.setImage(#imageLiteral(resourceName: "Image Unmute"), for: [])
     }
     
     private func turnOffSound() {
         scene.gameInfo.musicPlayer?.pause()
-        scene.UI.imageViewSound.image = #imageLiteral(resourceName: "Image Mute")
+        scene.UI.buttonSound.setImage(#imageLiteral(resourceName: "Image Mute"), for: [])
     }
     
     func hideThemeView() {
@@ -167,7 +167,7 @@ class EndDelegate {
                        animations: {
                         self.scene.UI.buttonRetry.alpha = 0
                         self.scene.UI.labelBest.alpha = 0
-                        self.scene.UI.imageViewSound.alpha = 0
+                        self.scene.UI.buttonSound.alpha = 0
                         self.scene.UI.viewOverlay.alpha = 0.0
                         self.scene.UI.buttonStore.alpha = 0
                         self.scene.UI.labelPoints.text = "0"

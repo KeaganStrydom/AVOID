@@ -95,18 +95,18 @@ class StartDelegate {
     }    
     
     private func initImageViewSound() {
-        scene.UI.imageViewSound.alpha = 0
-        scene.UI.imageViewSound.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
-        scene.UI.imageViewSound.contentMode = .scaleAspectFit
-        scene.UI.imageViewSound.layer.cornerRadius = Screen.width * (4/75)
-        scene.UI.imageViewSound.isUserInteractionEnabled = true
-        scene.UI.imageViewSound.addGestureRecognizer(UITapGestureRecognizer(target: scene, action: #selector(scene.handleSoundInvert)))
-        scene.UI.imageViewSound.translatesAutoresizingMaskIntoConstraints = false
-        scene.view?.addSubview(scene.UI.imageViewSound)
-        scene.UI.imageViewSound.centerYAnchor.constraint(equalTo: scene.UI.labelPoints.centerYAnchor).isActive = true
-        scene.UI.imageViewSound.heightAnchor.constraint(equalTo: (scene.view?.widthAnchor)!, multiplier: 0.14).isActive = true
-        scene.UI.imageViewSound.widthAnchor.constraint(equalTo: scene.UI.imageViewSound.heightAnchor, multiplier: 1.8).isActive = true
-        scene.UI.imageViewSound.centerXAnchor.constraint(equalTo: (scene.view?.rightAnchor)!, constant: -((scene.view?.frame.width)!/6)).isActive = true
+        scene.UI.buttonSound.alpha = 0
+        scene.UI.buttonSound.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
+        scene.UI.buttonSound.contentMode = .scaleAspectFit
+        scene.UI.buttonSound.layer.cornerRadius = Screen.width * (4/75)
+        scene.UI.buttonSound.isUserInteractionEnabled = true
+        scene.UI.buttonSound.addTarget(scene, action: #selector(scene.handleSoundInvert), for: .touchUpInside)
+        scene.UI.buttonSound.translatesAutoresizingMaskIntoConstraints = false
+        scene.view?.addSubview(scene.UI.buttonSound)
+        scene.UI.buttonSound.centerYAnchor.constraint(equalTo: scene.UI.labelPoints.centerYAnchor).isActive = true
+        scene.UI.buttonSound.heightAnchor.constraint(equalTo: (scene.view?.widthAnchor)!, multiplier: 0.14).isActive = true
+        scene.UI.buttonSound.widthAnchor.constraint(equalTo: scene.UI.buttonSound.heightAnchor, multiplier: 1.8).isActive = true
+        scene.UI.buttonSound.centerXAnchor.constraint(equalTo: (scene.view?.rightAnchor)!, constant: -((scene.view?.frame.width)!/6)).isActive = true
     }
     
     private func initLabelBest() {
@@ -172,8 +172,8 @@ class StartDelegate {
         scene.UI.buttonBack.addTarget(scene, action: #selector(scene.handleBackButton), for: .touchUpInside)
         scene.view?.addSubview(scene.UI.buttonBack)
         scene.UI.buttonBack.centerYAnchor.constraint(equalTo: scene.UI.labelPoints.centerYAnchor).isActive = true
-        scene.UI.buttonBack.widthAnchor.constraint(equalTo: scene.UI.imageViewSound.widthAnchor, multiplier: 1).isActive = true
-        scene.UI.buttonBack.heightAnchor.constraint(equalTo: scene.UI.imageViewSound.heightAnchor, multiplier: 1).isActive = true
+        scene.UI.buttonBack.widthAnchor.constraint(equalTo: scene.UI.buttonSound.widthAnchor, multiplier: 1).isActive = true
+        scene.UI.buttonBack.heightAnchor.constraint(equalTo: scene.UI.buttonSound.heightAnchor, multiplier: 1).isActive = true
         scene.UI.buttonBack.centerXAnchor.constraint(equalTo: (scene.view?.leftAnchor)!, constant:((scene.view?.frame.width)!/6)).isActive = true
     }
     

@@ -38,7 +38,7 @@ class ThemeDelegate {
                        animations: {
             self.scene.UI.buttonRetry.alpha = 0
             self.scene.UI.labelBest.alpha = 0
-            self.scene.UI.imageViewSound.alpha = 0
+            self.scene.UI.buttonSound.alpha = 0
             self.scene.UI.buttonStore.alpha = 0
         }) { (hasFinished) in
             UIView.animate(withDuration: 2,

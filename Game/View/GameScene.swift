@@ -194,6 +194,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         canSpawnTrail()
         updateLabelPoints()
         handleMusicReset()
+        resetYPos(ball: UI.gameBall)
+    }
+    
+    private func resetYPos(ball : Ball) {
+        if  ball.position.y != 0 {
+            ball.position.y = 0
+        }
     }
     
     private func updateLabelPoints() {

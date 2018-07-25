@@ -22,7 +22,7 @@ class Ball : SKSpriteNode {
     init(type : ballType, pos : CGPoint, textureImage : UIImage?) {
         
         self.type = type
-        
+
         if textureImage == nil {
             ballTexture = nil
         } else {

@@ -22,8 +22,7 @@ struct UIGameScene {
     var labelPoints = PointsLabel()
     var labelBest = UILabel()
     
-    var imageViewSound = UIImageView()
-    
+    var buttonSound = UIButton()
     var buttonStart = UIButton()
     var buttonRetry = UIButton()
     var buttonStore = UIButton()
