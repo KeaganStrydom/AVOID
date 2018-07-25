@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E818A4B62108D0EF00B79451 /* PointsIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818A4B52108D0EF00B79451 /* PointsIndicator.swift */; };
 		E883020A20EA399A00F1E541 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883020920EA399A00F1E541 /* SoundPlayer.swift */; };
 		E883020C20EA3D7400F1E541 /* Shatter Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E883020B20EA3D7300F1E541 /* Shatter Sound.mp3 */; };
 		E883021020EA5FAD00F1E541 /* GameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E883020F20EA5FAD00F1E541 /* GameMusic.mp3 */; };
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E818A4B52108D0EF00B79451 /* PointsIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIndicator.swift; sourceTree = "<group>"; };
 		E883020920EA399A00F1E541 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		E883020B20EA3D7300F1E541 /* Shatter Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Shatter Sound.mp3"; path = "../Shatter Sound.mp3"; sourceTree = "<group>"; };
 		E883020F20EA5FAD00F1E541 /* GameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GameMusic.mp3; path = ../GameMusic.mp3; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				E8A9823620E443E900130463 /* PointsLabel.swift */,
+				E818A4B52108D0EF00B79451 /* PointsIndicator.swift */,
 				E8AA156E20EC2A9C00FBA7F9 /* ThemeButton.swift */,
 				E8FD709920F7F80C009167E2 /* GameVariables.swift */,
 				E883021F20EACCAE00F1E541 /* Assets.xcassets */,
@@ -529,6 +532,7 @@
 				E887F68E2104D4840074D89B /* InvinvibilityTheme.swift in Sources */,
 				E8FD70AA20F95FE9009167E2 /* ThemeDelegate.swift in Sources */,
 				E8F3F26A20F96B870051289B /* UserDefaults.swift in Sources */,
+				E818A4B62108D0EF00B79451 /* PointsIndicator.swift in Sources */,
 				E8FD709C20F7F843009167E2 /* CollisionCategory.swift in Sources */,
 				E8A9823720E443E900130463 /* PointsLabel.swift in Sources */,
 				E8FD70A120F80F6D009167E2 /* Names.swift in Sources */,

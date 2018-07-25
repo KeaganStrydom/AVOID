@@ -8,6 +8,7 @@
 
 import Foundation
 import AVKit
+import SpriteKit
 
 struct GameVariables {
     
@@ -20,9 +21,11 @@ struct GameVariables {
     var intPoints = 0
     var isSoundMuted = true
     var isGameRunning = false
+    var barrierSpawnDelay = 0.2
+    var canSpawnBarrier = true
     var darknessFrequency = 1.5
     var selectedTheme : Theme
-    var timerDarkness : Timer? = Timer()
+    let darknessSpawner = SKNode()
     var timerPoints : Timer? = Timer()
     var timerBallTrail : Timer? = Timer()
     var activePowerup : Powerup?

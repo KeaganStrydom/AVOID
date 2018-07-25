@@ -17,3 +17,4 @@ struct CollisionCategory {
     static let powerupCategory : UInt32 = 0x1 << 3
     static let darknessCategory : UInt32 = 0x1 << 4
 }
+

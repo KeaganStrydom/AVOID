@@ -11,7 +11,7 @@ import AVKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    let darknessSpawner = SKNode()
+    
     var settings : SettingsProvider
     var gameInfo = GameVariables(selectedTheme: ThemeDefault())
     var UI = UIGameScene()
@@ -52,6 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 guard let secondNode = secondBody.node else {
                     return
                 }
+
         if secondNode.name == Name.darkness || secondNode.name == Name.wall {
             if gameInfo.activePowerup == nil {
                 EndDelegate(scene: self).endGame()
@@ -60,6 +61,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         else if secondNode.name == Name.barrier {
+            PointsIndicator(in: self, addend: gameInfo.pointsAddend, position: secondNode.position)
+            
             self.increasePoints(by: gameInfo.pointsAddend)
         }
         else if secondNode.name == Name.powerup {
@@ -71,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    private func increasePoints(by addend: Int) {
+    func increasePoints(by addend: Int) {
         gameInfo.intPoints += addend
         increasSpawnSpeedTo(getSpeedForDifficulty())
     }
@@ -79,17 +82,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public func activateSpawner() {
         let wait = SKAction.wait(forDuration: gameInfo.darknessFrequency)
         let spawn = SKAction.run(spawnDarkness)
-        darknessSpawner.run(SKAction.repeatForever(SKAction.sequence([wait,spawn])))
-        addChild(darknessSpawner)
+        gameInfo.darknessSpawner.run(SKAction.repeatForever(SKAction.sequence([wait,spawn])))
+        addChild(gameInfo.darknessSpawner)
     }
     
     public func deactivateSpawner() {
-        darknessSpawner.removeAllActions()
-        darknessSpawner.removeFromParent()
+        gameInfo.darknessSpawner.removeAllActions()
+        gameInfo.darknessSpawner.removeFromParent()
     }
     
     private func increasSpawnSpeedTo(_ speed : CGFloat) {
-        darknessSpawner.speed = speed
+        gameInfo.darknessSpawner.speed = speed
     }
     
     @objc func spawnDarkness(){
@@ -145,7 +148,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnBarrier(at position: CGPoint) {
-        if gameInfo.isGameRunning {
+        if gameInfo.isGameRunning && gameInfo.canSpawnBarrier {
+            delayBarrierSpawn()
             let barrier = Barrier(frame: self.frame, position: position, textureImage: gameInfo.selectedTheme.barrierTexture)
             let border = SKPhysicsBody(rectangleOf: barrier.size)
             border.categoryBitMask = CollisionCategory.barrierCategory
@@ -153,6 +157,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.addChild(barrier)
         }
     }
+    
+    
+    func delayBarrierSpawn() {
+        gameInfo.canSpawnBarrier = false
+        _ = Timer.scheduledTimer(withTimeInterval: gameInfo.barrierSpawnDelay, repeats: false, block: { (timer) in
+            self.gameInfo.canSpawnBarrier = true
+        })
+    }
+    
 
     public func animatePoints( target : Int, current : Int) {
         var currentNum : Int

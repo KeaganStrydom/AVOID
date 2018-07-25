@@ -60,6 +60,8 @@ class Freeze : SKSpriteNode, Powerup {
         if node.name == Name.wall {
             EndDelegate(scene: scene).endGame()
         } else if node.name == Name.darkness {
+            scene.increasePoints(by: 5)
+            PointsIndicator(in: scene, addend: 5, position: node.position)
             (node as? UIDarkness)?.emitter.removeFromParent()
             node.removeAllChildren()
             node.removeFromParent()
