@@ -40,6 +40,7 @@ class ThemeDelegate {
             self.scene.UI.labelBest.alpha = 0
             self.scene.UI.buttonSound.alpha = 0
             self.scene.UI.buttonStore.alpha = 0
+            self.scene.UI.buttonShare.alpha = 0
         }) { (hasFinished) in
             UIView.animate(withDuration: 2,
                            delay: 0,
@@ -104,6 +105,9 @@ class ThemeDelegate {
     }
     
     private func buyError(sender: UIButton) {
+         if !scene.gameInfo.isSoundMuted {
+        scene.gameInfo.buyErrorPlayer?.play()
+        }
         UIView.animate(withDuration: 0.5, animations: {
             sender.superview?.backgroundColor = UIColor(red: 1, green: 70/255, blue: 70/255, alpha: 1)
         }) { (hasFinished) in

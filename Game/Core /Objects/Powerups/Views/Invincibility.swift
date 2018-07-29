@@ -9,7 +9,7 @@
 import SpriteKit
 class Invincibility : SKSpriteNode, Powerup {
     var theme: Theme
-    
+    var sound = SoundPlayer(resourceName: "Indestructible")
     var image: UIImage = #imageLiteral(resourceName: "Invincibility")
     
     /* Powerup is circular object;
@@ -36,6 +36,9 @@ class Invincibility : SKSpriteNode, Powerup {
     }
     
     func affect(_ scene: GameScene) {
+        if !scene.gameInfo.isSoundMuted {
+            sound?.play()
+        }
         PowerupDelegate.removePowerups(from: scene)
         scene.gameInfo.selectedTheme = theme
         scene.backgroundColor = theme.sceneColor

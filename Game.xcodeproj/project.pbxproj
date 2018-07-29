@@ -9,10 +9,15 @@
 /* Begin PBXBuildFile section */
 		E818A4B62108D0EF00B79451 /* PointsIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818A4B52108D0EF00B79451 /* PointsIndicator.swift */; };
 		E883020A20EA399A00F1E541 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883020920EA399A00F1E541 /* SoundPlayer.swift */; };
-		E883020C20EA3D7400F1E541 /* Shatter Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E883020B20EA3D7300F1E541 /* Shatter Sound.mp3 */; };
-		E883021020EA5FAD00F1E541 /* GameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E883020F20EA5FAD00F1E541 /* GameMusic.mp3 */; };
 		E883021220EA69E100F1E541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E883021120EA69E100F1E541 /* Assets.xcassets */; };
 		E883022120EACCAE00F1E541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E883021F20EACCAE00F1E541 /* Assets.xcassets */; };
+		E8877116210E4F61006D1E93 /* InGame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8A146E1210E1A120034EB85 /* InGame.mp3 */; };
+		E8877117210E4F66006D1E93 /* Double Points.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8877110210E4DAD006D1E93 /* Double Points.mp3 */; };
+		E8877118210E4F6D006D1E93 /* Score More.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8877114210E4DC4006D1E93 /* Score More.mp3 */; };
+		E887711A210E4F76006D1E93 /* Freeze.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E887710F210E4DAD006D1E93 /* Freeze.mp3 */; };
+		E887711B210E4F7C006D1E93 /* Indestructible.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8877111210E4DAD006D1E93 /* Indestructible.mp3 */; };
+		E887711C210E4F8D006D1E93 /* Shatter Sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E883020B20EA3D7300F1E541 /* Shatter Sound.mp3 */; };
+		E887711E210E56A8006D1E93 /* Personal Best.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E887711D210E56A7006D1E93 /* Personal Best.mp3 */; };
 		E887F67B21036DF00074D89B /* Probability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F67A21036DF00074D89B /* Probability.swift */; };
 		E887F67D210385500074D89B /* Freeze.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F67C210385500074D89B /* Freeze.swift */; };
 		E887F680210385B50074D89B /* Invincibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F67F210385B50074D89B /* Invincibility.swift */; };
@@ -23,6 +28,8 @@
 		E887F6922104D5890074D89B /* FreezeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F6912104D5890074D89B /* FreezeTheme.swift */; };
 		E887F696210520B90074D89B /* DarknessShatter.sks in Resources */ = {isa = PBXBuildFile; fileRef = E887F695210520B90074D89B /* DarknessShatter.sks */; };
 		E897241520F20FA200C423F6 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E897241420F20FA200C423F6 /* SettingsProvider.swift */; };
+		E8A146E0210E19400034EB85 /* OutGame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8A146DF210E19400034EB85 /* OutGame.mp3 */; };
+		E8A146E4210E23F30034EB85 /* Confetti.sks in Resources */ = {isa = PBXBuildFile; fileRef = E8A146E3210E23F30034EB85 /* Confetti.sks */; };
 		E8A981E720E2CCE600130463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A981E620E2CCE600130463 /* AppDelegate.swift */; };
 		E8A981ED20E2CCE600130463 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A981EC20E2CCE600130463 /* GameScene.swift */; };
 		E8A981EF20E2CCE600130463 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8A981EE20E2CCE600130463 /* GameViewController.swift */; };
@@ -42,6 +49,7 @@
 		E8AA156D20EC125700FBA7F9 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */; };
 		E8AA156F20EC2A9C00FBA7F9 /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA156E20EC2A9C00FBA7F9 /* ThemeButton.swift */; };
 		E8D0840D2101261B00805CBF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D0840C2101261B00805CBF /* Protocol.swift */; };
+		E8DBA6BD210A4E200032D766 /* Social Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DBA6BC210A4E200032D766 /* Social Media.swift */; };
 		E8E3941420FCCCE30029FFDA /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941320FCCCE30029FFDA /* Default.swift */; };
 		E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941520FCCCF80029FFDA /* Blue.swift */; };
 		E8E3941820FCCD050029FFDA /* Blood.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3941720FCCD050029FFDA /* Blood.swift */; };
@@ -81,9 +89,13 @@
 		E818A4B52108D0EF00B79451 /* PointsIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIndicator.swift; sourceTree = "<group>"; };
 		E883020920EA399A00F1E541 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		E883020B20EA3D7300F1E541 /* Shatter Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Shatter Sound.mp3"; path = "../Shatter Sound.mp3"; sourceTree = "<group>"; };
-		E883020F20EA5FAD00F1E541 /* GameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GameMusic.mp3; path = ../GameMusic.mp3; sourceTree = "<group>"; };
 		E883021120EA69E100F1E541 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E883021F20EACCAE00F1E541 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E887710F210E4DAD006D1E93 /* Freeze.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Freeze.mp3; path = ../MP3/Freeze.mp3; sourceTree = "<group>"; };
+		E8877110210E4DAD006D1E93 /* Double Points.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Double Points.mp3"; path = "../MP3/Double Points.mp3"; sourceTree = "<group>"; };
+		E8877111210E4DAD006D1E93 /* Indestructible.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Indestructible.mp3; path = ../MP3/Indestructible.mp3; sourceTree = "<group>"; };
+		E8877114210E4DC4006D1E93 /* Score More.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Score More.mp3"; sourceTree = "<group>"; };
+		E887711D210E56A7006D1E93 /* Personal Best.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Personal Best.mp3"; path = "../Personal Best.mp3"; sourceTree = "<group>"; };
 		E887F67A21036DF00074D89B /* Probability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Probability.swift; sourceTree = "<group>"; };
 		E887F67C210385500074D89B /* Freeze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Freeze.swift; sourceTree = "<group>"; };
 		E887F67F210385B50074D89B /* Invincibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invincibility.swift; sourceTree = "<group>"; };
@@ -94,6 +106,9 @@
 		E887F6912104D5890074D89B /* FreezeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreezeTheme.swift; sourceTree = "<group>"; };
 		E887F695210520B90074D89B /* DarknessShatter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DarknessShatter.sks; sourceTree = "<group>"; };
 		E897241420F20FA200C423F6 /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
+		E8A146DF210E19400034EB85 /* OutGame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = OutGame.mp3; path = ../OutGame.mp3; sourceTree = "<group>"; };
+		E8A146E1210E1A120034EB85 /* InGame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = InGame.mp3; path = ../InGame.mp3; sourceTree = "<group>"; };
+		E8A146E3210E23F30034EB85 /* Confetti.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Confetti.sks; sourceTree = "<group>"; };
 		E8A981E320E2CCE600130463 /* Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8A981E620E2CCE600130463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8A981EC20E2CCE600130463 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -119,6 +134,7 @@
 		E8AA156C20EC125700FBA7F9 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E8AA156E20EC2A9C00FBA7F9 /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
 		E8D0840C2101261B00805CBF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Protocol.swift; path = "Game/Core /Objects/Powerups/Protocol.swift"; sourceTree = SOURCE_ROOT; };
+		E8DBA6BC210A4E200032D766 /* Social Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Social Media.swift"; sourceTree = "<group>"; };
 		E8E3941320FCCCE30029FFDA /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
 		E8E3941520FCCCF80029FFDA /* Blue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blue.swift; sourceTree = "<group>"; };
 		E8E3941720FCCD050029FFDA /* Blood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blood.swift; sourceTree = "<group>"; };
@@ -213,7 +229,13 @@
 		E8A981DA20E2CCE600130463 = {
 			isa = PBXGroup;
 			children = (
-				E883020F20EA5FAD00F1E541 /* GameMusic.mp3 */,
+				E887711D210E56A7006D1E93 /* Personal Best.mp3 */,
+				E8877110210E4DAD006D1E93 /* Double Points.mp3 */,
+				E887710F210E4DAD006D1E93 /* Freeze.mp3 */,
+				E8877111210E4DAD006D1E93 /* Indestructible.mp3 */,
+				E8877114210E4DC4006D1E93 /* Score More.mp3 */,
+				E8A146E1210E1A120034EB85 /* InGame.mp3 */,
+				E8A146DF210E19400034EB85 /* OutGame.mp3 */,
 				E883020B20EA3D7300F1E541 /* Shatter Sound.mp3 */,
 				E8A9821F20E3DBD000130463 /* Assets.xcassets */,
 				E8A981E520E2CCE600130463 /* Game */,
@@ -289,9 +311,10 @@
 			children = (
 				E8A9822C20E4183000130463 /* Shatter.sks */,
 				E8A9822820E40D1E00130463 /* Background.sks */,
+				E8A146E3210E23F30034EB85 /* Confetti.sks */,
 				E8AA156820EBB2C300FBA7F9 /* Darkness.sks */,
-				E8AA156920EBB2C300FBA7F9 /* Assets.xcassets */,
 				E887F695210520B90074D89B /* DarknessShatter.sks */,
+				E8AA156920EBB2C300FBA7F9 /* Assets.xcassets */,
 			);
 			path = EmitterEffects;
 			sourceTree = "<group>";
@@ -355,6 +378,7 @@
 			children = (
 				E8A981EC20E2CCE600130463 /* GameScene.swift */,
 				E887F67A21036DF00074D89B /* Probability.swift */,
+				E8DBA6BC210A4E200032D766 /* Social Media.swift */,
 				E8FD709720F7F7E9009167E2 /* UserInterface.swift */,
 				E8E3941220FCCCC80029FFDA /* Themes */,
 			);
@@ -470,10 +494,17 @@
 			files = (
 				E887F696210520B90074D89B /* DarknessShatter.sks in Resources */,
 				E8A981F220E2CCE600130463 /* Main.storyboard in Resources */,
-				E883021020EA5FAD00F1E541 /* GameMusic.mp3 in Resources */,
+				E8877116210E4F61006D1E93 /* InGame.mp3 in Resources */,
+				E8877117210E4F66006D1E93 /* Double Points.mp3 in Resources */,
+				E8A146E0210E19400034EB85 /* OutGame.mp3 in Resources */,
+				E887711A210E4F76006D1E93 /* Freeze.mp3 in Resources */,
+				E887711E210E56A8006D1E93 /* Personal Best.mp3 in Resources */,
+				E887711B210E4F7C006D1E93 /* Indestructible.mp3 in Resources */,
+				E887711C210E4F8D006D1E93 /* Shatter Sound.mp3 in Resources */,
+				E8877118210E4F6D006D1E93 /* Score More.mp3 in Resources */,
 				E8E3942220FD8AB00029FFDA /* Lightbox.png in Resources */,
 				E8AA156A20EBB2C300FBA7F9 /* Darkness.sks in Resources */,
-				E883020C20EA3D7400F1E541 /* Shatter Sound.mp3 in Resources */,
+				E8A146E4210E23F30034EB85 /* Confetti.sks in Resources */,
 				E883021220EA69E100F1E541 /* Assets.xcassets in Resources */,
 				E8AA156B20EBB2C300FBA7F9 /* Assets.xcassets in Resources */,
 				E8E3941C20FD55D50029FFDA /* Assets.xcassets in Resources */,
@@ -538,6 +569,7 @@
 				E8FD70A120F80F6D009167E2 /* Names.swift in Sources */,
 				E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */,
 				E8FD709820F7F7E9009167E2 /* UserInterface.swift in Sources */,
+				E8DBA6BD210A4E200032D766 /* Social Media.swift in Sources */,
 				E8FD709420F7F792009167E2 /* ScreenSize.swift in Sources */,
 				E887F6922104D5890074D89B /* FreezeTheme.swift in Sources */,
 				E887F67B21036DF00074D89B /* Probability.swift in Sources */,

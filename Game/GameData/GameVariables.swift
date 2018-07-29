@@ -33,6 +33,9 @@ struct GameVariables {
 
     var activePowerupView : UIView?
     // Audio Players
-    var musicPlayer = SoundPlayer(resourceName: "GameMusic")
+    var outGamePlayer = SoundPlayer(resourceName: "OutGame")
+    var inGamePlayer = SoundPlayer(resourceName: "InGame")
     var shatterPlayer = AVAudioPlayer()
+    let buyErrorPlayer = SoundPlayer(resourceName: "Score More")
+    let highScorePlayer = SoundPlayer(resourceName: "Personal Best")
 }

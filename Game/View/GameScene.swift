@@ -15,9 +15,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var settings : SettingsProvider
     var gameInfo = GameVariables(selectedTheme: ThemeDefault())
     var UI = UIGameScene()
+    var sender : UIViewController
     
-    init(settings : SettingsProvider) {
+    init(settings : SettingsProvider, sender : UIViewController) {
         self.settings = settings
+        self.sender = sender
         let sizeOfView =  CGSize(width: Screen.width, height: Screen.height)
         super.init(size: sizeOfView )
     }
@@ -133,8 +135,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
    
-    func playMusic() {
-        gameInfo.musicPlayer?.play()
+    func playInGame() {
+        if !gameInfo.isSoundMuted {
+            gameInfo.inGamePlayer?.play()
+        }
+    }
+    
+    func playOutGame() {
+        if !gameInfo.isSoundMuted {
+            gameInfo.outGamePlayer?.play()
+        }
+    }
+    
+    func stopInGame() {
+        if !gameInfo.isSoundMuted {
+            gameInfo.inGamePlayer?.pause()
+        }
+    }
+    
+    func stopOutGame() {
+        if !gameInfo.isSoundMuted {
+            gameInfo.outGamePlayer?.pause()
+        }
     }
     
     func addBorder(to object: SKNode, withBody border: SKPhysicsBody) {
@@ -214,8 +236,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func handleMusicReset() {
-        if !((gameInfo.musicPlayer?.isPlaying)!) && settings.getMusicState() == SoundOptions.unmuted && gameInfo.isGameRunning {
-            playMusic()
+        if !((gameInfo.inGamePlayer?.isPlaying)!) && settings.getMusicState() == SoundOptions.unmuted && gameInfo.isGameRunning {
+            playInGame()
+        }
+        if !((gameInfo.outGamePlayer?.isPlaying)!) && settings.getMusicState() == SoundOptions.unmuted && !gameInfo.isGameRunning && !(gameInfo.inGamePlayer?.isPlaying)! {
+            playOutGame()
         }
     }
     
@@ -260,6 +285,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func handleBackButton(){
         let delegate = EndDelegate(scene : self)
         delegate.presentEndView()
+    }
+    @objc func handleShareButton(){
+        let delegate = EndDelegate(scene : self)
+        delegate.share()
     }
     @objc func handleThemeSwitch(sender: UIButton){
         let delegate = ThemeDelegate(scene: self)

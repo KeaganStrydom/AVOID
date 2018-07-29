@@ -37,8 +37,7 @@ class Darkness : SKSpriteNode, UIDarkness {
         physicsBody?.categoryBitMask = CollisionCategory.darknessCategory
         physicsBody?.isDynamic = false
         physicsBody?.affectedByGravity = false
-        
-        
+            
             emitter.particlePositionRange = CGVector(dx: width, dy: 0)
             emitter.position = position
             emitter.particleColorSequence = nil

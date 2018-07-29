@@ -9,7 +9,7 @@
 import SpriteKit
 class DoublePoints : SKSpriteNode, Powerup {
     var theme: Theme
-    
+    let sound = SoundPlayer(resourceName: "Double Points")
     var image: UIImage = #imageLiteral(resourceName: "x2 Multiplier")
     
     /* Powerup is circular object;
@@ -37,6 +37,9 @@ class DoublePoints : SKSpriteNode, Powerup {
     }
     
     func affect(_ scene: GameScene) {
+        if !scene.gameInfo.isSoundMuted {
+            sound?.play()
+        }
         PowerupDelegate.removePowerups(from: scene)
         scene.gameInfo.pointsAddend = 2
         scene.gameInfo.activePowerupView = ActivePowerupView(in: scene, powerupImage: image)

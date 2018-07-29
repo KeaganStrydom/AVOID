@@ -9,7 +9,7 @@
 import SpriteKit
 class Freeze : SKSpriteNode, Powerup {
     var theme: Theme
-    
+    let sound = SoundPlayer(resourceName: "Freeze")
     var image: UIImage = #imageLiteral(resourceName: "Freeze")
     
     /* Powerup is circular object;
@@ -36,6 +36,9 @@ class Freeze : SKSpriteNode, Powerup {
     }
     
     func affect(_ scene: GameScene) {
+         if !scene.gameInfo.isSoundMuted {
+            sound?.play()
+        }
         PowerupDelegate.removePowerups(from: scene)
         scene.gameInfo.selectedTheme = theme
         scene.backgroundColor = theme.sceneColor

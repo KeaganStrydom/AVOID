@@ -17,11 +17,12 @@ struct UIGameScene {
                                pos: CGPoint(),
                                textureImage: nil)
     
-    var viewOverlay = UIView()
+    var viewOverlay = SKSpriteNode()
     
     var labelPoints = PointsLabel()
     var labelBest = UILabel()
     
+    var buttonShare = UIButton()
     var buttonSound = UIButton()
     var buttonStart = UIButton()
     var buttonRetry = UIButton()

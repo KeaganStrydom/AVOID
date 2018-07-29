@@ -18,7 +18,6 @@ class StartDelegate {
     }
     
     @objc func beginGame(){
-        scene.gameInfo.isSoundMuted = fetchSoundState()
         scene.speed = 1
         hideStart()
     }
@@ -28,6 +27,8 @@ class StartDelegate {
             self.scene.UI.buttonStart.alpha = 0
         }) { (hasFinishedAnimating) in
             self.scene.gameInfo.isGameRunning = true
+            self.scene.playInGame()
+            self.scene.stopOutGame()
             self.initBall()
             _ = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.applyForceAndStartSpawner), userInfo: nil, repeats: false)
         }
@@ -40,8 +41,8 @@ class StartDelegate {
     
     private func fetchSoundState() -> Bool {
         let soundState = scene.settings.getMusicState()
-        if  soundState == SoundOptions.unmuted || soundState == nil {
-            scene.playMusic()
+        if  soundState == SoundOptions.unmuted {
+            scene.playOutGame()
             return false
         }
         return true
@@ -63,6 +64,8 @@ class StartDelegate {
         scene.addBorder(to: scene, withBody: border)
         createBackgroundParticles()
         
+        scene.gameInfo.isSoundMuted = fetchSoundState()
+
         initViewOverlay()
         scene.view?.addSubview(scene.UI.labelPoints)
         initLabelBest()
@@ -71,7 +74,9 @@ class StartDelegate {
         initLabelStart()
         initThemeDisplay()
         initBackButton()
+        initShareButton()
     }
+    
     
     private func initBall() {
         scene.UI.gameBall = Ball.init(type: .normal, pos: CGPoint(x: 0, y: 0), textureImage: scene.gameInfo.selectedTheme.ballTexture)
@@ -154,10 +159,11 @@ class StartDelegate {
     }
     
     private func initViewOverlay() {
-        scene.UI.viewOverlay.backgroundColor = .black
+        scene.UI.viewOverlay.color = .black
         scene.UI.viewOverlay.alpha = 0
-        scene.UI.viewOverlay.frame = (scene.view?.frame)!
-        scene.view?.addSubview(scene.UI.viewOverlay)
+        scene.UI.viewOverlay.size = CGSize(width: Screen.width, height: Screen.height)
+        scene.UI.viewOverlay.position = CGPoint(x: 0, y: 0)
+        scene.addChild(scene.UI.viewOverlay)
     }
     
     
@@ -177,12 +183,27 @@ class StartDelegate {
         scene.UI.buttonBack.centerXAnchor.constraint(equalTo: (scene.view?.leftAnchor)!, constant:((scene.view?.frame.width)!/6)).isActive = true
     }
     
+    private func initShareButton() {
+        scene.UI.buttonShare.alpha = 0
+        scene.UI.buttonShare.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
+        scene.UI.buttonShare.setImage(#imageLiteral(resourceName: "ShareButton"), for: .normal)
+        scene.UI.buttonShare.layer.cornerRadius = Screen.width * (4/75)
+        scene.UI.buttonShare.imageView?.frame = CGRect(origin: scene.UI.buttonShare.center, size: CGSize(width: scene.UI.buttonShare.frame.height * 0.7, height: scene.UI.buttonShare.frame.height * 0.7))
+        scene.UI.buttonShare.imageView?.contentMode = .scaleAspectFit
+        scene.UI.buttonShare.translatesAutoresizingMaskIntoConstraints = false
+        scene.UI.buttonShare.addTarget(scene, action: #selector(scene.handleShareButton), for: .touchUpInside)
+        scene.view?.addSubview(scene.UI.buttonShare)
+        scene.UI.buttonShare.centerYAnchor.constraint(equalTo: scene.UI.buttonBack.centerYAnchor).isActive = true
+        scene.UI.buttonShare.widthAnchor.constraint(equalTo: scene.UI.buttonBack.widthAnchor, multiplier: 1).isActive = true
+        scene.UI.buttonShare.heightAnchor.constraint(equalTo: scene.UI.buttonBack.heightAnchor, multiplier: 1).isActive = true
+        scene.UI.buttonShare.centerXAnchor.constraint(equalTo: scene.UI.buttonBack.centerXAnchor).isActive = true
+    }
+    
     func createBackgroundParticles() {
         let background = SKEmitterNode(fileNamed: "Background.sks")
         background?.position = CGPoint(x: 0, y: 0)
         background?.particlePositionRange = CGVector(dx: scene.frame.width, dy: scene.frame.height)
-        scene.addChild(background!
-        )
+        scene.addChild(background!)
     }
     
     

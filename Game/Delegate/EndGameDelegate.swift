@@ -19,7 +19,6 @@ class EndDelegate {
     
     
     func endGame() {
-        checkHighScore()
         shatterBall()
         scene.deactivateSpawner()
         scene.gameInfo.isGameRunning = false
@@ -46,16 +45,18 @@ class EndDelegate {
         scene.gameInfo.shatterPlayer = SoundPlayer(resourceName: "Shatter Sound")!
         scene.gameInfo.shatterPlayer.play()
     }
-    
+
     private func checkHighScore() {
         let highscore = scene.settings.getHighscore()
         if scene.gameInfo.intPoints > highscore {
             scene.settings.updateHighscoreTo(highscore : scene.gameInfo.intPoints)
-            
+            if !scene.gameInfo.isSoundMuted {
+            scene.gameInfo.highScorePlayer?.play()
+            }
         }
     }
-
     
+
     private func addPointsToTotal() {
         let totalPoints = scene.settings.getTotalPoints()
         scene.settings.updateTotalPointsTo(totalPoints + scene.gameInfo.intPoints)
@@ -65,12 +66,23 @@ class EndDelegate {
     @objc func presentEndView(){
         hideThemeView()
         showRetry()
+        checkHighScore()
         showBest()
         showSoundOptions()
         showOverlay()
         showPoints()
+        showShare()
         hideActivePowerupView()
+        scene.stopInGame()
+        scene.playOutGame()
     }
+    
+    private func showShare() {
+        UIView.animate(withDuration: 1.5) {
+            self.scene.UI.buttonShare.alpha = 1
+        }
+    }
+    
     
     private func showPoints() {
         scene.UI.labelPoints.text = String(scene.gameInfo.intPoints)
@@ -102,6 +114,11 @@ class EndDelegate {
         }
     }
     
+    func share() {
+        _ = Share(in: scene.sender, for: scene.gameInfo.intPoints);
+    }
+    
+    
     @objc func invertSoundOption() {
         var soundState : String
         if scene.gameInfo.isSoundMuted {
@@ -119,12 +136,12 @@ class EndDelegate {
     }
     
     private func turnOnSound() {
-        scene.playMusic()
+        scene.playOutGame()
         scene.UI.buttonSound.setImage(#imageLiteral(resourceName: "Image Unmute"), for: [])
     }
     
     private func turnOffSound() {
-        scene.gameInfo.musicPlayer?.pause()
+        scene.gameInfo.outGamePlayer?.pause()
         scene.UI.buttonSound.setImage(#imageLiteral(resourceName: "Image Mute"), for: [])
     }
     
@@ -170,6 +187,7 @@ class EndDelegate {
                         self.scene.UI.buttonSound.alpha = 0
                         self.scene.UI.viewOverlay.alpha = 0.0
                         self.scene.UI.buttonStore.alpha = 0
+                        self.scene.UI.buttonShare.alpha = 0
                         self.scene.UI.labelPoints.text = "0"
         }) { (success) in
             self.retryGame()

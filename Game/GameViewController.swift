@@ -16,13 +16,14 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         hasConfigBeenSet()
         initGameScene()
     }
     
     private func initGameScene() {
 
-        let scene = GameScene(settings : settings)
+        let scene = GameScene(settings: settings, sender: self)
             scene.scaleMode = .aspectFill
         
         if let view = self.view as! SKView? {
@@ -43,6 +44,12 @@ class GameViewController: UIViewController {
         settings.updateMusicStateTo(SoundOptions.unmuted)
         
     }
+    
+    func playBassMusic() {
+        let bassMusic = SoundPlayer(resourceName: "Music-Bass")
+        bassMusic?.play()
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }
