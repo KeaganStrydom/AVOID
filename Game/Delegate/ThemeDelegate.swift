@@ -41,6 +41,7 @@ class ThemeDelegate {
             self.scene.UI.buttonSound.alpha = 0
             self.scene.UI.buttonStore.alpha = 0
             self.scene.UI.buttonShare.alpha = 0
+            self.scene.UI.labelPoints.textAlignment = .right
         }) { (hasFinished) in
             UIView.animate(withDuration: 2,
                            delay: 0,

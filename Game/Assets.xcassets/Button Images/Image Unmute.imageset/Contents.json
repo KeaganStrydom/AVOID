@@ -7,10 +7,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "Unmute2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Unmute3x.png",
       "scale" : "3x"
     }
   ],

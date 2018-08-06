@@ -152,6 +152,7 @@ class EndDelegate {
                        animations: {
                         self.scene.UI.buttonBack.alpha = 0
                         self.scene.UI.storeCV?.alpha = 0
+                        self.scene.UI.labelPoints.textAlignment = .center
         }) { (success) in
             self.showTheme()
         }

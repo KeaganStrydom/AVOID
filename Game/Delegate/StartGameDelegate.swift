@@ -70,7 +70,7 @@ class StartDelegate {
         scene.view?.addSubview(scene.UI.labelPoints)
         initLabelBest()
         initLabelRetry()
-        initImageViewSound()
+        initSoundButton()
         initLabelStart()
         initThemeDisplay()
         initBackButton()
@@ -99,7 +99,7 @@ class StartDelegate {
         scene.UI.buttonStore.bottomAnchor.constraint(equalTo: (scene.view?.bottomAnchor)!, constant: -(Screen.height * 0.05)).isActive = true
     }    
     
-    private func initImageViewSound() {
+    private func initSoundButton() {
         scene.UI.buttonSound.alpha = 0
         scene.UI.buttonSound.backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4)
         scene.UI.buttonSound.contentMode = .scaleAspectFit

@@ -29,8 +29,7 @@ class PointsIndicator : UILabel {
                                  width: 100,
                                  height: 50))
         
-        
-        font = UIFont(name: "Futura-Bold", size: 27)
+        font = UIFont(name: "Futura-Bold", size: Screen.width * 0.036)
         textColor = .white
         textAlignment = .center
         alpha = 1

@@ -114,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func canSpawnPowerup() {
         if gameInfo.activePowerup == nil {
         let randomNumber = Random.generateNumber(between: 0, and: 100)
-        if Probability.inOdds(randomNumber, oddsRange: 0...60) {
+        if Probability.inOdds(randomNumber, oddsRange: 0...30) {
             let powerupSpawnTimer = Timer.scheduledTimer(timeInterval: 0.5,
                                                          target: self,
                                                          selector: #selector(spawnPowerup),
@@ -125,8 +125,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func spawnPowerup() {
-        let upperBound = Int(Screen.width/2 * 0.8)
-        let lowerBound = Int((Screen.width/2) * -0.8) 
+        let upperBound = Int(Screen.width/2 * 0.65)
+        let lowerBound = Int((Screen.width/2) * -0.65) 
         let xPosition = CGFloat(Random.generateNumber(between: lowerBound, and: upperBound))
         guard let newPowerup : Powerup = PowerupFactory.makeRandom(in: self, at: CGPoint(x: xPosition,
                                                                                          y: Screen.height)) else {
@@ -198,7 +198,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if current != target {
             UIView.animate(withDuration: 1, animations: {
-                self.UI.labelPoints.text = "•" + String(currentNum)
+                self.UI.labelPoints.text = String(currentNum) + "•    "
                 
             }) { (success) in
                 if target > current {

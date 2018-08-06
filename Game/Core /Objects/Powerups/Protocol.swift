@@ -65,6 +65,12 @@ struct PowerupDelegate {
         }
     }
     
+    static func wait(in scene : GameScene) {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_)  in
+            removePowerups(from: scene)
+        }
+    }
+    
     static func changeDarkness(to color: UIColor, in scene: GameScene) {
         let theme = scene.gameInfo.selectedTheme
         for child in scene.children {

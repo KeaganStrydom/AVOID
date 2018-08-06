@@ -42,12 +42,6 @@ class GameViewController: UIViewController {
         settings.updateSelectedThemeTo(ThemeDefault())
         settings.initBoughtThemes()
         settings.updateMusicStateTo(SoundOptions.unmuted)
-        
-    }
-    
-    func playBassMusic() {
-        let bassMusic = SoundPlayer(resourceName: "Music-Bass")
-        bassMusic?.play()
     }
     
     override var shouldAutorotate: Bool {
@@ -55,10 +49,10 @@ class GameViewController: UIViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+        if UIDevice.current.userInterfaceIdiom == .phone  {
+            return UIInterfaceOrientationMask.portrait
         } else {
-            return .all
+            return .portrait
         }
     }
 

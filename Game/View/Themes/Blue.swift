@@ -34,7 +34,7 @@ public class ThemeBlue : Theme {
         status = .noStatus
         
         name = "Lost in Blue"
-        price = 1000                 
+        price = 2000
         emitterColor = UIColor(red: 80/255,
                                green: 177/255,
                                blue: 255/255,

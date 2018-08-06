@@ -41,6 +41,7 @@ class DoublePoints : SKSpriteNode, Powerup {
             sound?.play()
         }
         PowerupDelegate.removePowerups(from: scene)
+        PowerupDelegate.wait(in: scene)
         scene.gameInfo.pointsAddend = 2
         scene.gameInfo.activePowerupView = ActivePowerupView(in: scene, powerupImage: image)
         scene.gameInfo.selectedTheme = theme

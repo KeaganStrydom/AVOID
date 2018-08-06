@@ -40,6 +40,7 @@ class Freeze : SKSpriteNode, Powerup {
             sound?.play()
         }
         PowerupDelegate.removePowerups(from: scene)
+        PowerupDelegate.wait(in: scene)
         scene.gameInfo.selectedTheme = theme
         scene.backgroundColor = theme.sceneColor
         PowerupDelegate.changeDarkness(to: theme.emitterColor, in: scene)
