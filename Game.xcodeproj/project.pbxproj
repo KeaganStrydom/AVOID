@@ -27,6 +27,8 @@
 		E887F6902104D5750074D89B /* DoublePointsTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F68F2104D5750074D89B /* DoublePointsTheme.swift */; };
 		E887F6922104D5890074D89B /* FreezeTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E887F6912104D5890074D89B /* FreezeTheme.swift */; };
 		E887F696210520B90074D89B /* DarknessShatter.sks in Resources */ = {isa = PBXBuildFile; fileRef = E887F695210520B90074D89B /* DarknessShatter.sks */; };
+		E89057102129EC9E00EB60E7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E890570E2129EC9D00EB60E7 /* Fabric.framework */; };
+		E89057112129EC9E00EB60E7 /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E890570F2129EC9D00EB60E7 /* Answers.framework */; };
 		E897241520F20FA200C423F6 /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E897241420F20FA200C423F6 /* SettingsProvider.swift */; };
 		E8A146E0210E19400034EB85 /* OutGame.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8A146DF210E19400034EB85 /* OutGame.mp3 */; };
 		E8A146E4210E23F30034EB85 /* Confetti.sks in Resources */ = {isa = PBXBuildFile; fileRef = E8A146E3210E23F30034EB85 /* Confetti.sks */; };
@@ -105,6 +107,8 @@
 		E887F68F2104D5750074D89B /* DoublePointsTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePointsTheme.swift; sourceTree = "<group>"; };
 		E887F6912104D5890074D89B /* FreezeTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreezeTheme.swift; sourceTree = "<group>"; };
 		E887F695210520B90074D89B /* DarknessShatter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DarknessShatter.sks; sourceTree = "<group>"; };
+		E890570E2129EC9D00EB60E7 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		E890570F2129EC9D00EB60E7 /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		E897241420F20FA200C423F6 /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		E8A146DF210E19400034EB85 /* OutGame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = OutGame.mp3; path = ../OutGame.mp3; sourceTree = "<group>"; };
 		E8A146E1210E1A120034EB85 /* InGame.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = InGame.mp3; path = ../InGame.mp3; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E89057112129EC9E00EB60E7 /* Answers.framework in Frameworks */,
+				E89057102129EC9E00EB60E7 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +235,8 @@
 		E8A981DA20E2CCE600130463 = {
 			isa = PBXGroup;
 			children = (
+				E890570F2129EC9D00EB60E7 /* Answers.framework */,
+				E890570E2129EC9D00EB60E7 /* Fabric.framework */,
 				E887711D210E56A7006D1E93 /* Personal Best.mp3 */,
 				E8877110210E4DAD006D1E93 /* Double Points.mp3 */,
 				E887710F210E4DAD006D1E93 /* Freeze.mp3 */,
@@ -395,6 +403,7 @@
 				E8A981DF20E2CCE600130463 /* Sources */,
 				E8A981E020E2CCE600130463 /* Frameworks */,
 				E8A981E120E2CCE600130463 /* Resources */,
+				E890570D2129EC5000EB60E7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -531,6 +540,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E890570D2129EC5000EB60E7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 96cd6313ddc92d5ec65836d69de3e1941edc204b f8a3566df1efd59c47e421fe6211caf5361700c4418c347f46bc9d57c701f2ad";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E8A981DF20E2CCE600130463 /* Sources */ = {
@@ -741,6 +766,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RX8VB86N8V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Game/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -758,6 +787,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RX8VB86N8V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Game/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
