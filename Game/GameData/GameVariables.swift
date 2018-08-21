@@ -26,11 +26,11 @@ struct GameVariables {
     var darknessFrequency = 1.5
     var selectedTheme : Theme
     let darknessSpawner = SKNode()
-    var timerPoints : Timer? = Timer()
-    var timerBallTrail : Timer? = Timer()
+    let trailSpawner = SKNode()
+    let trailFrequency = 0.1
     var activePowerup : Powerup?
     var pointsAddend : Int = 1
-
+    var isLeavingStore = false
     var activePowerupView : UIView?
     // Audio Players
     var outGamePlayer = SoundPlayer(resourceName: "OutGame")

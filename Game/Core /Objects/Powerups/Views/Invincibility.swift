@@ -44,7 +44,7 @@ class Invincibility : SKSpriteNode, Powerup {
         scene.gameInfo.selectedTheme = theme
         scene.backgroundColor = theme.sceneColor
         scene.gameInfo.activePowerupView = ActivePowerupView(in: scene, powerupImage: image)
-        scene.deactivateSpawner()
+        scene.deactivate(scene.gameInfo.darknessSpawner)
         PowerupDelegate.changeDarkness(to: theme.emitterColor, in: scene)
         _ = Timer.scheduledTimer(withTimeInterval: 8, repeats: false, block: { (success) in
             self.revert(scene)
@@ -53,7 +53,9 @@ class Invincibility : SKSpriteNode, Powerup {
     }
     
     func revert(_ scene: GameScene) {
-        scene.activateSpawner()
+        scene.activate(scene.gameInfo.darknessSpawner,
+                       with: scene.gameInfo.darknessFrequency,
+                       action: scene.spawnDarkness)
         scene.gameInfo.selectedTheme = scene.settings.getSelectedTheme()
         scene.gameInfo.activePowerup = nil
         scene.gameInfo.activePowerupView = nil

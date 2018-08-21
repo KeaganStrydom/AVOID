@@ -64,7 +64,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         else if secondNode.name == Name.barrier {
             PointsIndicator(in: self, addend: gameInfo.pointsAddend, position: secondNode.position)
-            
+            if Int((UI.gameBall.physicsBody?.velocity.dx)!) > 0 {
+             UI.gameBall.physicsBody?.velocity = CGVector(dx: Int(Screen.width * 0.785), dy: 0)
+            } else {
+             UI.gameBall.physicsBody?.velocity = CGVector(dx: -1 * Int(Screen.width * 0.785), dy: 0)
+            }
             self.increasePoints(by: gameInfo.pointsAddend)
         }
         else if secondNode.name == Name.powerup {
@@ -81,16 +85,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         increasSpawnSpeedTo(getSpeedForDifficulty())
     }
     
-    public func activateSpawner() {
-        let wait = SKAction.wait(forDuration: gameInfo.darknessFrequency)
-        let spawn = SKAction.run(spawnDarkness)
-        gameInfo.darknessSpawner.run(SKAction.repeatForever(SKAction.sequence([wait,spawn])))
-        addChild(gameInfo.darknessSpawner)
+    public func activate(_ spawner : SKNode, with frequency : Double, action: @escaping () -> Void) {
+        let wait = SKAction.wait(forDuration: frequency)
+        let spawn = SKAction.run(action)
+        spawner.run(SKAction.repeatForever(SKAction.sequence([wait,spawn])))
+        addChild(spawner)
     }
     
-    public func deactivateSpawner() {
-        gameInfo.darknessSpawner.removeAllActions()
-        gameInfo.darknessSpawner.removeFromParent()
+    public func deactivate(_ spawner : SKNode) {
+        spawner.removeAllActions()
+        spawner.removeFromParent()
     }
     
     private func increasSpawnSpeedTo(_ speed : CGFloat) {
@@ -191,8 +195,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     public func animatePoints( target : Int, current : Int) {
         var currentNum : Int
-        if (target - current) > 400 {
-            currentNum = target - 400
+        if (target - current) > 300 {
+            currentNum = target - 200
         } else {
             currentNum = current
         }
@@ -201,10 +205,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.UI.labelPoints.text = String(currentNum) + "•    "
                 
             }) { (success) in
+                if !(self.gameInfo.isLeavingStore) {
                 if target > current {
                     self.animatePoints(target: target, current: currentNum + 1)
                 } else {
                     self.animatePoints(target: target, current: currentNum - 1)
+                    }
+                } else {
+                    self.UI.labelPoints.text = String(self.gameInfo.intPoints)
                 }
             }
         }
@@ -212,10 +220,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        incFrame()
-        canSpawnTrail()
+        
         updateLabelPoints()
         handleMusicReset()
+        
         resetYPos(ball: UI.gameBall)
     }
     
@@ -231,9 +239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private func incFrame() {
-        gameInfo.intFrame += 1
-    }
+    
     
     func handleMusicReset() {
         if !((gameInfo.inGamePlayer?.isPlaying)!) && settings.getMusicState() == SoundOptions.unmuted && gameInfo.isGameRunning {
@@ -245,7 +251,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func canSpawnTrail() {
-        if gameInfo.isGameRunning && gameInfo.intFrame % 5 == 0  && UI.buttonStart.alpha == 0{
+        if gameInfo.isGameRunning && UI.buttonStart.alpha == 0{
             displayTrail(at: UI.gameBall.position)
         }
     }
@@ -285,6 +291,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func handleBackButton(){
         let delegate = EndDelegate(scene : self)
         delegate.presentEndView()
+        gameInfo.isLeavingStore = true
     }
     @objc func handleShareButton(){
         let delegate = EndDelegate(scene : self)

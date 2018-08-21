@@ -20,6 +20,9 @@ class StartDelegate {
     @objc func beginGame(){
         scene.speed = 1
         hideStart()
+        scene.activate(scene.gameInfo.trailSpawner,
+                       with: scene.gameInfo.trailFrequency,
+                       action: scene.canSpawnTrail)
     }
     
     func hideStart() {
@@ -36,7 +39,9 @@ class StartDelegate {
     
     @objc private func applyForceAndStartSpawner() {
         self.scene.UI.gameBall.applyImpulse()
-        scene.activateSpawner()
+        scene.activate(scene.gameInfo.darknessSpawner,
+                       with: scene.gameInfo.darknessFrequency,
+                       action: scene.spawnDarkness)
     }
     
     private func fetchSoundState() -> Bool {

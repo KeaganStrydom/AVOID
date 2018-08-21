@@ -20,7 +20,8 @@ class EndDelegate {
     
     func endGame() {
         shatterBall()
-        scene.deactivateSpawner()
+        scene.deactivate(scene.gameInfo.darknessSpawner)
+        scene.deactivate(scene.gameInfo.trailSpawner)
         scene.gameInfo.isGameRunning = false
         addPointsToTotal()
         Timer.scheduledTimer(timeInterval: 3,
@@ -174,6 +175,7 @@ class EndDelegate {
     private func showTheme() {
         UIView.animate(withDuration: 1.5) {
             self.scene.UI.buttonStore.alpha = 1
+            self.scene.gameInfo.isLeavingStore = false
         }
     }
     @objc func dismissEndView() {
