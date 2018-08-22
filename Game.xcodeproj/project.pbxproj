@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E818A4B62108D0EF00B79451 /* PointsIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818A4B52108D0EF00B79451 /* PointsIndicator.swift */; };
+		E84ECF2D212DE8B00042C428 /* FunTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84ECF2C212DE8B00042C428 /* FunTheme.swift */; };
+		E84ECF2F212DEB0D0042C428 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84ECF2E212DEB0D0042C428 /* Future.swift */; };
 		E883020A20EA399A00F1E541 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883020920EA399A00F1E541 /* SoundPlayer.swift */; };
 		E883021220EA69E100F1E541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E883021120EA69E100F1E541 /* Assets.xcassets */; };
 		E883022120EACCAE00F1E541 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E883021F20EACCAE00F1E541 /* Assets.xcassets */; };
@@ -89,6 +91,8 @@
 
 /* Begin PBXFileReference section */
 		E818A4B52108D0EF00B79451 /* PointsIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsIndicator.swift; sourceTree = "<group>"; };
+		E84ECF2C212DE8B00042C428 /* FunTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunTheme.swift; sourceTree = "<group>"; };
+		E84ECF2E212DEB0D0042C428 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		E883020920EA399A00F1E541 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		E883020B20EA3D7300F1E541 /* Shatter Sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Shatter Sound.mp3"; path = "../Shatter Sound.mp3"; sourceTree = "<group>"; };
 		E883021120EA69E100F1E541 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				E8E3941520FCCCF80029FFDA /* Blue.swift */,
 				E8E3941720FCCD050029FFDA /* Blood.swift */,
 				E8E3941320FCCCE30029FFDA /* Default.swift */,
+				E84ECF2E212DEB0D0042C428 /* Future.swift */,
+				E84ECF2C212DE8B00042C428 /* FunTheme.swift */,
 				E8F3F26F20FABB910051289B /* ThemeStoreCollectionView.swift */,
 				E8E3941A20FD55D50029FFDA /* Assets.xcassets */,
 			);
@@ -584,6 +590,7 @@
 				E8D0840D2101261B00805CBF /* Protocol.swift in Sources */,
 				E8E3941820FCCD050029FFDA /* Blood.swift in Sources */,
 				E8A981E720E2CCE600130463 /* AppDelegate.swift in Sources */,
+				E84ECF2F212DEB0D0042C428 /* Future.swift in Sources */,
 				E8F3F27020FABB910051289B /* ThemeStoreCollectionView.swift in Sources */,
 				E887F68E2104D4840074D89B /* InvinvibilityTheme.swift in Sources */,
 				E8FD70AA20F95FE9009167E2 /* ThemeDelegate.swift in Sources */,
@@ -595,6 +602,7 @@
 				E8E3941620FCCCF80029FFDA /* Blue.swift in Sources */,
 				E8FD709820F7F7E9009167E2 /* UserInterface.swift in Sources */,
 				E8DBA6BD210A4E200032D766 /* Social Media.swift in Sources */,
+				E84ECF2D212DE8B00042C428 /* FunTheme.swift in Sources */,
 				E8FD709420F7F792009167E2 /* ScreenSize.swift in Sources */,
 				E887F6922104D5890074D89B /* FreezeTheme.swift in Sources */,
 				E887F67B21036DF00074D89B /* Probability.swift in Sources */,

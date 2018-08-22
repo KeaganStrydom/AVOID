@@ -258,12 +258,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private func getSpeedForDifficulty() -> CGFloat {
         switch gameInfo.intPoints {
-        case 0...10 : return (1)
-        case 10...30 : return (1.5)
-        case 30...40 : return (2)
-        case _ where gameInfo.intPoints > 40 : return (2)
+        case 0...10 : return (2.5)
+        case 10...40 : return (2.5)
+        case 40...150 : return (2.5)
+        case _ where gameInfo.intPoints > 150 : return (2.2)
         default:
-            return 2
+            return 2.2
         }
     }
     

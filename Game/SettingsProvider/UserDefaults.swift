@@ -20,7 +20,7 @@ class UsersDefaults : SettingsProvider {
     }
     
     func getAllThemes() -> [Theme] {
-        let allThemes : [Theme] = [ThemeDefault(), ThemeBlood(), ThemeBlue()]
+        let allThemes : [Theme] = [ThemeDefault(), ThemeBlood(), ThemeBlue(), ThemeFun(), ThemeFuturistic()]
         
         let selectedThemeName = UserDefaults.standard.string(forKey: SettingsKeys.selectedTheme)
         let boughtThemes = getBoughtThemes()

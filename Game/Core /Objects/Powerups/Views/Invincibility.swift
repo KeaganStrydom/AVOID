@@ -46,6 +46,7 @@ class Invincibility : SKSpriteNode, Powerup {
         scene.gameInfo.activePowerupView = ActivePowerupView(in: scene, powerupImage: image)
         scene.deactivate(scene.gameInfo.darknessSpawner)
         PowerupDelegate.changeDarkness(to: theme.emitterColor, in: scene)
+        scene.gameInfo.canSpawnBarrier = false
         _ = Timer.scheduledTimer(withTimeInterval: 8, repeats: false, block: { (success) in
             self.revert(scene)
         })
@@ -53,6 +54,7 @@ class Invincibility : SKSpriteNode, Powerup {
     }
     
     func revert(_ scene: GameScene) {
+        scene.gameInfo.canSpawnBarrier = true
         scene.activate(scene.gameInfo.darknessSpawner,
                        with: scene.gameInfo.darknessFrequency,
                        action: scene.spawnDarkness)
@@ -64,6 +66,8 @@ class Invincibility : SKSpriteNode, Powerup {
         PowerupDelegate.changeDarkness(to: darknessColor, in: scene)
     }
     func collision(with node: SKNode, in scene: GameScene) {
-        
+        if node.name == Name.wall {
+            scene.increasePoints(by: 5)
+        }
     }
 }
