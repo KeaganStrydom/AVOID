@@ -11,16 +11,16 @@ class Invincibility : SKSpriteNode, Powerup {
     var theme: Theme
     var sound = SoundPlayer(resourceName: "Indestructible")
     var image: UIImage = #imageLiteral(resourceName: "Invincibility")
-    
+    var delay : Double
     /* Powerup is circular object;
      therfore it requires a radius and diameter. */
     var radius: CGFloat = Screen.width * 0.07
     
     init(in scene : GameScene, at position : CGPoint) {
         let diameter = radius * 2
+        self.delay = scene.gameInfo.barrierSpawnDelay
         self.theme = InvincibilityTheme(selected: scene.gameInfo.selectedTheme)
         super.init(texture: SKTexture(image: image), color: .clear, size: CGSize(width: diameter, height: diameter))
-        
         name = Name.powerup
         self.position = position
         self.anchorPoint = CGPoint(x: 0.5, y: 1)
@@ -46,7 +46,7 @@ class Invincibility : SKSpriteNode, Powerup {
         scene.gameInfo.activePowerupView = ActivePowerupView(in: scene, powerupImage: image)
         scene.deactivate(scene.gameInfo.darknessSpawner)
         PowerupDelegate.changeDarkness(to: theme.emitterColor, in: scene)
-        scene.gameInfo.canSpawnBarrier = false
+        scene.gameInfo.barrierSpawnDelay = 0.2
         _ = Timer.scheduledTimer(withTimeInterval: 8, repeats: false, block: { (success) in
             self.revert(scene)
         })
@@ -54,7 +54,7 @@ class Invincibility : SKSpriteNode, Powerup {
     }
     
     func revert(_ scene: GameScene) {
-        scene.gameInfo.canSpawnBarrier = true
+        scene.gameInfo.barrierSpawnDelay = delay
         scene.activate(scene.gameInfo.darknessSpawner,
                        with: scene.gameInfo.darknessFrequency,
                        action: scene.spawnDarkness)
@@ -66,8 +66,16 @@ class Invincibility : SKSpriteNode, Powerup {
         PowerupDelegate.changeDarkness(to: darknessColor, in: scene)
     }
     func collision(with node: SKNode, in scene: GameScene) {
-        if node.name == Name.wall {
-            scene.increasePoints(by: 5)
+    }
+    
+    func barrier(at position: CGPoint, in scene: GameScene) {
+        if position.x < (-0.3 * Screen.width) {
+            scene.spawnBarrier(at: CGPoint(x: -0.3 * Screen.width, y: 0))
+        } else if position.x > (0.3 * Screen.width) {
+            scene.spawnBarrier(at: CGPoint(x: 0.3 * Screen.width, y: 0))
+        } else {
+           scene.spawnBarrier(at: position)
         }
     }
+    
 }

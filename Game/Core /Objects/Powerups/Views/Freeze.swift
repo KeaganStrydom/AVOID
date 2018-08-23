@@ -78,8 +78,15 @@ class Freeze : SKSpriteNode, Powerup {
             EndDelegate(scene: scene).playShatterSound()
         }
         let shatter = SKEmitterNode(fileNamed: "DarknessShatter.sks")
+        shatter?.alpha = 0.15
         shatter?.position = darkness.position
+        let action = SKAction.moveTo(y: (shatter?.position.y)! - (0.1 * Screen.height), duration: 0.75)
+        shatter?.run(action)
         darkness.removeFromParent()
         scene.addChild(shatter!)
+    }
+    
+    func barrierCondition(at position: CGPoint, in scene: GameScene) {
+        scene.spawnBarrier(at: position)
     }
 }

@@ -15,17 +15,18 @@ protocol Powerup {
     func affect(_ scene : GameScene)
     func revert(_ scene : GameScene)
     func collision(with node : SKNode, in scene: GameScene)
+    func barrier(at position : CGPoint, in scene: GameScene)
 }
 
 class PowerupFactory {
     static func makeRandom(in scene: GameScene, at position : CGPoint) -> Powerup? {
         let randomNumber = Random.generateNumber(between: 0, and: 100)
         
-        if (0...40).contains(randomNumber) {
+        if (0...45).contains(randomNumber) {
             return makeFreeze(in: scene, at: position)
-        } else if (40...75).contains(randomNumber) {
+        } else if (45...90).contains(randomNumber) {
             return makeDoublePoints(in: scene, at: position)
-        } else if (75...100).contains(randomNumber) {
+        } else if (90...100).contains(randomNumber) {
             return makeInvincibility(in: scene, at: position)
         }
         

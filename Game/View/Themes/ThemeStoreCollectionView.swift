@@ -28,7 +28,7 @@ class ThemeStore :  UICollectionView, UICollectionViewDelegateFlowLayout, UIColl
         super.init(frame: frame, collectionViewLayout: layout)
         let sceneCenter = scene.view!.center
         center.x = sceneCenter.x
-        center.y = sceneCenter.y + (0.15 * (scene.view?.frame.height)!)
+        center.y = Screen.height - (Screen.height * 0.4)
         dataSource = self
         delegate = self
         register(UICollectionViewCell.self, forCellWithReuseIdentifier: identifier)

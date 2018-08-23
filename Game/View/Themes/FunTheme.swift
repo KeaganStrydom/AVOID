@@ -33,7 +33,7 @@ class ThemeFun : Theme {
         status = .noStatus
         
         name = "Fun"
-        price = 5000
+        price = 7500
         emitterColor = UIColor(red: 3/255,
                                green: 166/255,
                                blue: 245/255,

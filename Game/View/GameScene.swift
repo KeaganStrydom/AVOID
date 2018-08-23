@@ -37,7 +37,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let position = touch.location(in: self)
-            spawnBarrier(at: position)
+            if gameInfo.activePowerup != nil {
+                gameInfo.activePowerup?.barrier(at: position, in: self)
+            } else {
+                spawnBarrier(at: position)
+            }
         }
     }
         
@@ -65,7 +69,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if secondNode.name == Name.barrier {
             PointsIndicator(in: self, addend: gameInfo.pointsAddend, position: secondNode.position)
             if Int((UI.gameBall.physicsBody?.velocity.dx)!) > 0 {
-             UI.gameBall.physicsBody?.velocity = CGVector(dx: Int(Screen.width * 0.785), dy: 0)
+             UI.gameBall.physicsBody?.velocity = CGVector(dx: gameInfo.ballXVelocity, dy: 0)
             } else {
              UI.gameBall.physicsBody?.velocity = CGVector(dx: -1 * Int(Screen.width * 0.785), dy: 0)
             }
@@ -127,6 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
     
     @objc func spawnPowerup() {
         let upperBound = Int(Screen.width/2 * 0.65)
@@ -258,12 +263,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private func getSpeedForDifficulty() -> CGFloat {
         switch gameInfo.intPoints {
-        case 0...10 : return (2.5)
-        case 10...40 : return (2.5)
-        case 40...150 : return (2.5)
-        case _ where gameInfo.intPoints > 150 : return (2.2)
+        case 0...10 : return (1)
+        case 10...40 : return (1.5)
+        case 40...150 :
+            gameInfo.barrierSpawnDelay = 0.1
+            gameInfo.ballXVelocity = Int(0.80 * Screen.width)
+            return (2.0)
+        case _ where gameInfo.intPoints > 150 :
+            gameInfo.barrierSpawnDelay = 0.1
+            gameInfo.ballXVelocity = Int(0.94 * Screen.width)
+            return (2.5)
         default:
-            return 2.2
+            return 2
         }
     }
     

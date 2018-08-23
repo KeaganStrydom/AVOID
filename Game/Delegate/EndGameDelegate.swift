@@ -206,6 +206,9 @@ class EndDelegate {
         scene.UI.buttonStart.isUserInteractionEnabled = true
         UIView.animate(withDuration: 1.5) {
             self.scene.gameInfo.intPoints = 0
+            self.scene.gameInfo.pointsAddend = 1
+            self.scene.gameInfo.ballXVelocity = Int(0.785 * Screen.width)
+            self.scene.gameInfo.barrierSpawnDelay = 0.2
             self.scene.UI.buttonStart.alpha = 1
         }
     }

@@ -32,6 +32,7 @@ struct GameVariables {
     var pointsAddend : Int = 1
     var isLeavingStore = false
     var activePowerupView : UIView?
+    var ballXVelocity  = Int(Screen.width * 0.785)
     // Audio Players
     var outGamePlayer = SoundPlayer(resourceName: "OutGame")
     var inGamePlayer = SoundPlayer(resourceName: "InGame")

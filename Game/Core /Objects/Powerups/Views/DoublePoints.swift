@@ -66,6 +66,8 @@ class DoublePoints : SKSpriteNode, Powerup {
         EndDelegate(scene: scene).endGame()
     }
     
-
+    func barrier(at position: CGPoint, in scene: GameScene) {
+        scene.spawnBarrier(at: position)
+    }
 }
 
